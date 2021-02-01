@@ -12,3 +12,7 @@
 .navbar__item:hover{
     background-color: #cccccc;
 }
+.navbar__item_active{
+    background-color: #cccccc;
+    cursor: auto;
+}
