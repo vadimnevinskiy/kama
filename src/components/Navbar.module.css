@@ -1,0 +1,14 @@
+.navbar{
+    grid-area: n;
+    margin-left: 10px;
+}
+.navbar__item{
+    display: block;
+    padding: 5px 10px 5px 10px;
+    margin: 0px 0px 10px 0px;
+    text-decoration: none;
+    color: #000000;
+}
+.navbar__item:hover{
+    background-color: #cccccc;
+}
