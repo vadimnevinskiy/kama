@@ -6,9 +6,10 @@
 }
 .header{
     grid-area: h;
-    background-color: #ffffff;
-    border-bottom: 1px solid #cccccc;
+    background-color: #3c59ba;
+    border-bottom: 1px solid #162145;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 .h-block{
     width: 1000px;
@@ -65,9 +66,9 @@
     color: #cccccc;
 }
 .post-item{
-    border: 1px dotted #cccccc;
+    border: 1px solid #3e75c2;
     padding: 10px;
     margin-bottom: 20px;
-    background-color: #cccccc;
+    background-color: #b1c7e6;
     border-radius: 3px;
 }
