@@ -24,4 +24,10 @@
 .likes{
     flex-grow: 0;
     margin: 0px 0px 0px 20px;
+    text-align: right;
+}
+.likesBtn{
+    margin-left: 10px;
+    cursor: pointer;
+    vertical-align: -7px;
 }
