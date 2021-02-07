@@ -1,12 +1,4 @@
-.profile{
-    grid-area: c;
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    padding: 30px;
-}
+.profile{}
 .user{
     display: grid;
     grid-template-areas: "ua un";
