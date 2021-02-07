@@ -36,11 +36,3 @@
 .user__status{
     color: #cccccc;
 }
-.posts{}
-.posts__item{
-    border: 1px solid #3e75c2;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #b1c7e6;
-    border-radius: 3px;
-}

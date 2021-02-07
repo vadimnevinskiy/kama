@@ -1,0 +1,21 @@
+.posts{}
+.form{margin: 0px 0px 20px 0px;}
+.fieldBox{margin: 0px 0px 10px 0px;}
+.field{
+    width: 98%;
+    padding: 1%;
+    border: 1px solid #ccc;
+    outline:none;
+    font-size: 18px;
+}
+
+.buttonBox{
+    text-align: right;
+}
+.button{
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    outline:none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
