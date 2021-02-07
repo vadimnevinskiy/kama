@@ -4,23 +4,23 @@ import classes from './Navbar.module.css';
 const Navbar = () => {
     return (
         <nav className={classes.navbar}>
-            <a href="#" className={`${classes.navbar__item} ${classes.navbar__item_active}`}>
+            <a href="/profile" className={`${classes.navbar__item} ${classes.navbar__item_active}`}>
                 <span className={`${classes.icon} material-icons`}>person</span>
                 Profile
             </a>
-            <a href="#" className={classes.navbar__item}>
+            <a href="/dialogs" className={classes.navbar__item}>
                 <span className={`${classes.icon} material-icons`}>mail</span>
-                Messages
+                Dialogs
             </a>
-            <a href="#" className={classes.navbar__item}>
+            <a href="/news" className={classes.navbar__item}>
                 <span className={`${classes.icon} material-icons`}>event</span>
                 News
             </a>
-            <a href="#" className={classes.navbar__item}>
+            <a href="/music" className={classes.navbar__item}>
                 <span className={`${classes.icon} material-icons`}>queue_music</span>
                 Music
             </a>
-            <a href="#" className={classes.navbar__item}>
+            <a href="/settings" className={classes.navbar__item}>
                 <span className={`${classes.icon} material-icons`}>settings</span>
                 Settings
             </a>
