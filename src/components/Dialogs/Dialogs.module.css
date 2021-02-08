@@ -10,6 +10,9 @@
     background: #EDEEF0;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
+    color: #000000;
+    display: block;
 }
 .dialog:hover{
     background: #cccccc;
