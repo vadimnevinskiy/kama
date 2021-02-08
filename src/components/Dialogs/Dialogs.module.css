@@ -1,0 +1,29 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+}
+.dialogsList{}
+.dialog{
+    padding: 5px 10px 7px 10px;
+    margin-bottom: 5px;
+    background: #EDEEF0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.dialog:hover{
+    background: #cccccc;
+}
+.activeDialog{
+    background: #cccccc;
+    cursor: auto;
+}
+.messagesList{}
+.message{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background: #b1c7e6;
+
+}
