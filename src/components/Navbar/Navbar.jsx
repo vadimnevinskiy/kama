@@ -7,7 +7,7 @@ const Navbar = () => {
         <nav className={classes.navbar}>
             {/*<NavLink to="/profile" className={`${classes.navbar__item} ${classes.navbar__item_active}`}>*/}
             {/*    <span className={`${classes.icon} material-icons`}>person</span>*/}
-            {/*    Profile*/}
+            {/*    UserInfo*/}
             {/*</NavLink>*/}
             <NavLink to="/profile" className={classes.navbar__item} activeClassName={classes.active}>
                 <span className={`${classes.icon} material-icons`}>person</span>
