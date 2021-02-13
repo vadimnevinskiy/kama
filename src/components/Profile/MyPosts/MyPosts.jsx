@@ -9,12 +9,14 @@ const MyPosts = () => {
         {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', likes: 2},
         {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
     ];
+    let postList = posts.map(item => {
+        return (
+            <Posts message={item.text} likes={item.likes} key={item.id} />
+        )
+    });
     return (
         <div className={classes.posts}>
-            <Posts message={posts[0].text} likes={posts[0].likes} />
-            <Posts message={posts[1].text} likes={posts[1].likes} />
-            <Posts message={posts[2].text} likes={posts[2].likes} />
-            <Posts message={posts[3].text} likes={posts[3].likes} />
+            {postList}
             <div className={classes.form}>
                 <div className={classes.fieldBox}>
                     <textarea className={classes.field}></textarea>
