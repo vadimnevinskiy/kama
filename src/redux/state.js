@@ -16,7 +16,8 @@ let state = {
                 {id: 0, text: 'Lorem ipsum dolor sit amet.'},
                 {id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.'},
                 {id: 2, text: 'Lorem ipsum dolor.'}
-            ]
+            ],
+            messageText: ''
         },
         profile: {
             posts: [
@@ -60,6 +61,21 @@ export let addPost = () => {
     rerenderEntireTree(state);
 }
 
+
+export let writingMessage = (message) => {
+    state.pages.dialogs.messageText = message;
+    rerenderEntireTree(state);
+}
+
+export let addMessage = () => {
+    let newMessage = {
+        id: state.pages.dialogs.messages + 1,
+        text: state.pages.dialogs.messageText,
+    }
+    state.pages.dialogs.messages.push(newMessage);
+    state.pages.dialogs.messageText = '';
+    rerenderEntireTree(state);
+}
 
 
 export default state;

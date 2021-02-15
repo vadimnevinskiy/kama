@@ -16,10 +16,13 @@ const Dialogs = (props) => {
     let messageElements = props.dialogs.messages.map(m => <MessageItem message={m.text} key={m.id}/>);
 
 
-    let newPostText = React.createRef(); // Created link for textarea
+    let newMessageText = React.createRef(); // Created link for textarea
+    let writingMessage = () => {
+        let postText = newMessageText.current.value;
+        props.writingMessage(postText)
+    }
     let AddPost = () => {
-        let postText = newPostText.current.value;
-        alert(postText);
+        props.addMessage();
     }
 
     return (
@@ -33,7 +36,7 @@ const Dialogs = (props) => {
 
                 <div className={classes.form}>
                     <div className={classes.fieldBox}>
-                        <textarea className={classes.field} ref={newPostText}></textarea>
+                        <textarea className={classes.field} ref={newMessageText} onChange={writingMessage} value={props.dialogs.messageText} ></textarea>
                     </div>
                     <div className={classes.buttonBox}>
                         <button className={classes.button} onClick={ AddPost }>
