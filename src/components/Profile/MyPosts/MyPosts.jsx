@@ -3,7 +3,7 @@ import classes from './MyPosts.module.css';
 import Posts from "./Post/Posts";
 
 const MyPosts = (props) => {
-    let postList = props.posts.map(item => {
+    let postList = props.profile.posts.map(item => {
         return (
             <Posts message={item.text} likes={item.likes} key={item.id} />
         )
@@ -17,7 +17,6 @@ const MyPosts = (props) => {
 
     let AddPost = () => {
         props.addPost();
-        newPostText.current.value = "";
     }
 
 
@@ -26,7 +25,7 @@ const MyPosts = (props) => {
             {postList}
             <div className={classes.form}>
                 <div className={classes.fieldBox}>
-                    <textarea className={classes.field} ref={newPostText} onChange={writingMessage}></textarea>
+                    <textarea className={classes.field} ref={newPostText} onChange={writingMessage} value={props.profile.postText}/>
                 </div>
                 <div className={classes.buttonBox}>
                     <button className={classes.button} onClick={ AddPost }>

@@ -46,6 +46,7 @@ let state = {
 
 export let writingPostMessage = (postMessage) => {
     state.pages.profile.postText = postMessage;
+    rerenderEntireTree(state);
 }
 
 export let addPost = () => {
@@ -55,6 +56,7 @@ export let addPost = () => {
         likes: 0
     }
     state.pages.profile.posts.push(newPost);
+    state.pages.profile.postText = '';
     rerenderEntireTree(state);
 }
 
