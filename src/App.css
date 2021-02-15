@@ -5,7 +5,11 @@ html, body, #root, .app-wrapper{
     display: grid;
     grid-template-areas: "h h" "n c" "f f";
     grid-template-rows: 60px 1fr 60px;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 3fr 13fr;
+}
+.sidebar{
+    grid-area: n;
+    margin-left: 10px;
 }
 .app-wrapper-content{
     grid-area: c;
@@ -16,7 +20,5 @@ html, body, #root, .app-wrapper{
     margin-bottom: 10px;
     padding: 30px;
 }
-
-
 
 

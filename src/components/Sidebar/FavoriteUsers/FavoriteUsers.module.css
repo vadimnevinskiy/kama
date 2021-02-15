@@ -1,0 +1,25 @@
+.favorites{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px 10px 8px 10px;
+    margin-left: 10px;
+    background: #ffffff;
+}
+.favoriteItem{
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s;
+}
+.favoriteItem:hover{
+    background: #cccccc;
+    border-radius: 5px;
+}
+.userPic img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.userName{}

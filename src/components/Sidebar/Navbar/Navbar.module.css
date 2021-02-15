@@ -1,6 +1,5 @@
 .navbar{
-    grid-area: n;
-    margin-left: 10px;
+    margin-bottom: 50px;
 }
 .navbar__item{
     display: block;
