@@ -1,12 +1,19 @@
 .posts{}
-.form{margin: 0px 0px 20px 0px;}
-.fieldBox{margin: 0px 0px 10px 0px;}
+.form{
+    margin: 0px 0px 20px 0px;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-gap: 10px;
+}
+.fieldBox{margin: 0px 0px 0px 0px;}
 .field{
     width: 98%;
-    padding: 1%;
+    height: 47px;
+    padding: 5px;
     border: 1px solid #ccc;
     outline:none;
     font-size: 18px;
+    resize: none;
 }
 
 .buttonBox{
@@ -14,8 +21,10 @@
 }
 .button{
     cursor: pointer;
-    border: 1px solid #cccccc;
+    border: none;
     outline:none;
-    font-size: 20px;
-    padding: 10px 20px;
+    padding: 3px 0px 0px 0px;
+    background: none;
 }
+.buttonIcon{font-size: 50px;color: #b1c7e6;transition: all 0.2s;}
+.buttonIcon:hover{color: #3c59ba;}

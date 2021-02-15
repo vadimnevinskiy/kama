@@ -28,5 +28,34 @@
     border: 1px solid #cccccc;
     border-radius: 5px;
     background: #b1c7e6;
-
 }
+
+.form{
+    margin: 0px 0px 20px 0px;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    grid-gap: 10px;
+}
+.fieldBox{margin: 0px 0px 10px 0px;}
+.field{
+    width: 98%;
+    height: 47px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    outline:none;
+    font-size: 18px;
+    resize: none;
+}
+
+.buttonBox{
+    text-align: right;
+}
+.button{
+    cursor: pointer;
+    border: none;
+    outline:none;
+    padding: 3px 0px 0px 0px;
+    background: none;
+}
+.buttonIcon{font-size: 50px;color: #b1c7e6;transition: all 0.2s;}
+.buttonIcon:hover{color: #3c59ba;}

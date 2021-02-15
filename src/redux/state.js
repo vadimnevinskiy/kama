@@ -1,27 +1,32 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
-    dialogs: {
-        users: [
-            {id: 0, name: 'Dima'},
-            {id: 1, name: 'Vadim'},
-            {id: 2, name: 'Katya'},
-            {id: 3, name: 'Lena'},
-            {id: 4, name: 'Viktor'},
-            {id: 5, name: 'Sasha'},
-            {id: 6, name: 'Vasya'},
-        ],
-        messages: [
-            {id: 0, text: 'Lorem ipsum dolor sit amet.'},
-            {id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.'},
-            {id: 2, text: 'Lorem ipsum dolor.'}
-        ],
-    },
-    profile: {
-        posts: [
-            {id: 0, text: 'Lorem ipsum dolor sit.', likes: 12},
-            {id: 1, text: 'Mecessitatibus numquam obcaecati officia porro quia quis vel.', likes: 1},
-            {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', likes: 2},
-            {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
-        ]
+    pages: {
+        dialogs: {
+            users: [
+                {id: 0, name: 'Dima'},
+                {id: 1, name: 'Vadim'},
+                {id: 2, name: 'Katya'},
+                {id: 3, name: 'Lena'},
+                {id: 4, name: 'Viktor'},
+                {id: 5, name: 'Sasha'},
+                {id: 6, name: 'Vasya'},
+            ],
+            messages: [
+                {id: 0, text: 'Lorem ipsum dolor sit amet.'},
+                {id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.'},
+                {id: 2, text: 'Lorem ipsum dolor.'}
+            ]
+        },
+        profile: {
+            posts: [
+                {id: 0, text: 'Lorem ipsum dolor sit.', likes: 12},
+                {id: 1, text: 'Mecessitatibus numquam obcaecati officia porro quia quis vel.', likes: 1},
+                {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', likes: 2},
+                {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
+            ],
+            postText: ''
+        }
     },
     sidebar: {
         navbar: [
@@ -38,5 +43,21 @@ let state = {
         ]
     }
 };
+
+export let writingPostMessage = (postMessage) => {
+    state.pages.profile.postText = postMessage;
+}
+
+export let addPost = () => {
+    let newPost = {
+        id: state.pages.profile.posts.length + 1,
+        text: state.pages.profile.postText,
+        likes: 0
+    }
+    state.pages.profile.posts.push(newPost);
+    rerenderEntireTree(state);
+}
+
+
 
 export default state;
