@@ -46,14 +46,19 @@ let store = {
     _callSubscriber() {
         console.log('State changed');
     },
+
     getState () {
         return this._state;
     },
-    writingPostMessage(value) {
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+    _writingPostMessage(value) {
         this._state.pages.profile.postText = value;
         this._callSubscriber(this._state);
     },
-    addPost() {
+    _addPost() {
         let newPost = {
             id: this._state.pages.profile.posts.length + 1,
             text: this._state.pages.profile.postText,
@@ -63,11 +68,11 @@ let store = {
         this._state.pages.profile.postText = '';
         this._callSubscriber(this._state);
     },
-    writingMessage(value) {
+    _writingMessage(value) {
         this._state.pages.dialogs.messageText = value;
         this._callSubscriber(this._state);
     },
-    addMessage() {
+    _addMessage() {
         let newMessage = {
             id: this._state.pages.dialogs.messages + 1,
             text: this._state.pages.dialogs.messageText,
@@ -76,8 +81,17 @@ let store = {
         this._state.pages.dialogs.messageText = '';
         this._callSubscriber(this._state);
     },
-    subscribe(observer) {
-        this._callSubscriber = observer;
+
+    dispatch(action) { // {type: 'ADD-POST', value: 'test'}
+        if(action.type === 'ADD-POST') {
+            this._addPost();
+        }else if(action.type === 'WRITE-POST') {
+            this._writingPostMessage(action.post);
+        }else if(action.type === 'ADD-MESSAGE') {
+            this._addMessage();
+        }else if(action.type === 'WRITE-MESSAGE') {
+            this._writingMessage(action.message)
+        }
     }
 }
 

@@ -19,10 +19,17 @@ const Dialogs = (props) => {
     let newMessageText = React.createRef(); // Created link for textarea
     let writingMessage = () => {
         let postText = newMessageText.current.value;
-        props.writingMessage(postText)
+        let action = {
+            type: 'WRITE-MESSAGE',
+            message: postText
+        }
+        props.dispatch(action);
     }
     let AddPost = () => {
-        props.addMessage();
+        let action = {
+            type: 'ADD-MESSAGE'
+        }
+        props.dispatch(action);
     }
 
     return (

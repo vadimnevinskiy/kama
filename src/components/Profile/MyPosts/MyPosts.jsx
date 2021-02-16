@@ -11,12 +11,19 @@ const MyPosts = (props) => {
 
     let newPostText = React.createRef(); // Created link for textarea
     let writingMessage = () => {
-        let postText = newPostText.current.value;
-        props.writingPostMessage(postText);
+        let post = newPostText.current.value;
+        let action = {
+            type: 'WRITE-POST',
+            post: post
+        }
+        props.dispatch(action);
     }
 
     let AddPost = () => {
-        props.addPost();
+        let action = {
+            type: 'ADD-POST'
+        }
+        props.dispatch(action);
     }
 
 
