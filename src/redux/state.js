@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const WRITE_POST = 'WRITE-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const WRITE_MESSAGE = 'WRITE-MESSAGE';
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state: {
@@ -59,69 +58,16 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    _writingPostMessage(value) {
-        this._state.pages.profile.postText = value;
-        this._callSubscriber(this._state);
-    },
-    _addPost() {
-        let newPost = {
-            id: this._state.pages.profile.posts.length + 1,
-            text: this._state.pages.profile.postText,
-            likes: 0
-        }
-        this._state.pages.profile.posts.push(newPost);
-        this._state.pages.profile.postText = '';
-        this._callSubscriber(this._state);
-    },
-    _writingMessage(value) {
-        this._state.pages.dialogs.messageText = value;
-        this._callSubscriber(this._state);
-    },
-    _addMessage() {
-        let newMessage = {
-            id: this._state.pages.dialogs.messages + 1,
-            text: this._state.pages.dialogs.messageText,
-        }
-        this._state.pages.dialogs.messages.push(newMessage);
-        this._state.pages.dialogs.messageText = '';
-        this._callSubscriber(this._state);
-    },
-
     dispatch(action) { // {type: 'ADD-POST', value: 'test'}
-        if(action.type === ADD_POST) {
-            this._addPost();
-        }else if(action.type === WRITE_POST) {
-            this._writingPostMessage(action.post);
-        }else if(action.type === ADD_MESSAGE) {
-            this._addMessage();
-        }else if(action.type === WRITE_MESSAGE) {
-            this._writingMessage(action.message)
-        }
+        this._state.pages.profile = profileReducer(this._state.pages.profile, action);
+        this._state.pages.dialogs = dialogsReducer(this._state.pages.dialogs, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
     }
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
 
-export const writingPostActionCreator = (value) => {
-    return {
-        type: WRITE_POST,
-        post: value
-    }
-}
 
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE
-    }
-}
-export const writingMessageActionCreator = (value) => {
-    return {
-        type: WRITE_MESSAGE,
-        message: value
-    }
-}
+
 export default store;
