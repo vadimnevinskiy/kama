@@ -10,20 +10,13 @@ const MyPosts = (props) => {
         )
     });
 
-    let newPostText = React.createRef(); // Created link for textarea
-    let writingMessage = () => {
-        let post = newPostText.current.value;
-        // let action = {
-        //     type: 'WRITE-POST',
-        //     post: post
-        // }
+
+    let writingMessage = (e) => {
+        let post = e.target.value;
         props.dispatch(writingPostActionCreator(post));
     }
 
     let AddPost = () => {
-        // let action = {
-        //     type: 'ADD-POST'
-        // }
         props.dispatch(addPostActionCreator());
     }
 
@@ -33,7 +26,7 @@ const MyPosts = (props) => {
             {postList}
             <div className={classes.form}>
                 <div className={classes.fieldBox}>
-                    <textarea className={classes.field} ref={newPostText} onChange={writingMessage} value={props.profile.postText}/>
+                    <textarea className={classes.field} onChange={writingMessage} value={props.profile.postText}/>
                 </div>
                 <div className={classes.buttonBox}>
                     <button className={classes.button} onClick={ AddPost }>
