@@ -2,8 +2,19 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
+import {addMessageActionCreator, writingMessageActionCreator} from "../../redux/state";
 
-
+// let addMessageActionCreator = () => {
+//     return {
+//         type: 'ADD-MESSAGE'
+//     }
+// }
+// let writingMessageActionCreator = (value) => {
+//     return {
+//             type: 'WRITE-MESSAGE',
+//             message: value
+//         }
+// }
 
 const Dialogs = (props) => {
 
@@ -19,17 +30,10 @@ const Dialogs = (props) => {
     let newMessageText = React.createRef(); // Created link for textarea
     let writingMessage = () => {
         let postText = newMessageText.current.value;
-        let action = {
-            type: 'WRITE-MESSAGE',
-            message: postText
-        }
-        props.dispatch(action);
+        props.dispatch(writingMessageActionCreator(postText));
     }
     let AddPost = () => {
-        let action = {
-            type: 'ADD-MESSAGE'
-        }
-        props.dispatch(action);
+        props.dispatch(addMessageActionCreator());
     }
 
     return (

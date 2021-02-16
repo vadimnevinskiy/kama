@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Posts from "./Post/Posts";
+import {addPostActionCreator, writingPostActionCreator} from "../../../redux/state";
 
 const MyPosts = (props) => {
     let postList = props.profile.posts.map(item => {
@@ -12,18 +13,18 @@ const MyPosts = (props) => {
     let newPostText = React.createRef(); // Created link for textarea
     let writingMessage = () => {
         let post = newPostText.current.value;
-        let action = {
-            type: 'WRITE-POST',
-            post: post
-        }
-        props.dispatch(action);
+        // let action = {
+        //     type: 'WRITE-POST',
+        //     post: post
+        // }
+        props.dispatch(writingPostActionCreator(post));
     }
 
     let AddPost = () => {
-        let action = {
-            type: 'ADD-POST'
-        }
-        props.dispatch(action);
+        // let action = {
+        //     type: 'ADD-POST'
+        // }
+        props.dispatch(addPostActionCreator());
     }
 
 

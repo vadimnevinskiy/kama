@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const WRITE_POST = 'WRITE-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const WRITE_MESSAGE = 'WRITE-MESSAGE';
+
 let store = {
     _state: {
         pages: {
@@ -83,16 +88,40 @@ let store = {
     },
 
     dispatch(action) { // {type: 'ADD-POST', value: 'test'}
-        if(action.type === 'ADD-POST') {
+        if(action.type === ADD_POST) {
             this._addPost();
-        }else if(action.type === 'WRITE-POST') {
+        }else if(action.type === WRITE_POST) {
             this._writingPostMessage(action.post);
-        }else if(action.type === 'ADD-MESSAGE') {
+        }else if(action.type === ADD_MESSAGE) {
             this._addMessage();
-        }else if(action.type === 'WRITE-MESSAGE') {
+        }else if(action.type === WRITE_MESSAGE) {
             this._writingMessage(action.message)
         }
     }
 }
 
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+
+export const writingPostActionCreator = (value) => {
+    return {
+        type: WRITE_POST,
+        post: value
+    }
+}
+
+export const addMessageActionCreator = () => {
+    return {
+        type: ADD_MESSAGE
+    }
+}
+export const writingMessageActionCreator = (value) => {
+    return {
+        type: WRITE_MESSAGE,
+        message: value
+    }
+}
 export default store;
