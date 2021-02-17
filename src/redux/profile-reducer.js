@@ -1,7 +1,17 @@
 const ADD_POST = 'ADD-POST';
 const WRITE_POST = 'WRITE-POST';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 0, text: 'Lorem ipsum dolor sit.', likes: 12},
+        {id: 1, text: 'Mecessitatibus numquam obcaecati officia porro quia quis vel.', likes: 1},
+        {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', likes: 2},
+        {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
+    ],
+    postText: ''
+};
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
