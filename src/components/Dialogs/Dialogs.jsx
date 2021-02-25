@@ -6,7 +6,6 @@ import {addMessageActionCreator, writingMessageActionCreator} from "../../redux/
 
 
 const Dialogs = (props) => {
-
     let dialogElements = props.dialogs.users.map(item => {
         return (
             <DialogItem name={item.name} id={item.id} key={item.id}/>
@@ -18,10 +17,10 @@ const Dialogs = (props) => {
 
     let writingMessage = (e) => {
         let postText = e.target.value;
-        props.dispatch(writingMessageActionCreator(postText));
+        props.updateDialogMessage(postText);
     }
     let AddPost = () => {
-        props.dispatch(addMessageActionCreator());
+        props.addMessage();
     }
 
     return (
@@ -35,7 +34,7 @@ const Dialogs = (props) => {
 
                 <div className={classes.form}>
                     <div className={classes.fieldBox}>
-                        <textarea className={classes.field} onChange={writingMessage} value={props.dialogs.messageText} ></textarea>
+                        <textarea className={classes.field} onChange={writingMessage} value={props.messageText} ></textarea>
                     </div>
                     <div className={classes.buttonBox}>
                         <button className={classes.button} onClick={ AddPost }>

@@ -1,36 +1,34 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Posts from "./Post/Posts";
-import {addPostActionCreator, writingPostActionCreator} from "../../../redux/profile-reducer";
 
 
 const MyPosts = (props) => {
-    let postList = props.profile.posts.map(item => {
+    let postList = props.posts.map(item => {
         return (
             <Posts message={item.text} likes={item.likes} key={item.id} />
         )
     });
 
 
-    let writingMessage = (e) => {
+    let onWritingMessage = (e) => {
         let post = e.target.value;
-        props.dispatch(writingPostActionCreator(post));
+        props.updateNewPostTest(post);
     }
 
-    let AddPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
-
 
     return (
         <div className={classes.posts}>
             {postList}
             <div className={classes.form}>
                 <div className={classes.fieldBox}>
-                    <textarea className={classes.field} onChange={writingMessage} value={props.profile.postText}/>
+                    <textarea className={classes.field} onChange={onWritingMessage} value={props.postText}/>
                 </div>
                 <div className={classes.buttonBox}>
-                    <button className={classes.button} onClick={ AddPost }>
+                    <button className={classes.button} onClick={ onAddPost }>
                         <span className={`${classes.buttonIcon} material-icons`}>send</span>
                     </button>
                 </div>
