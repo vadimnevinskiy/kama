@@ -59,3 +59,4 @@
 }
 .buttonIcon{font-size: 50px;color: #b1c7e6;transition: all 0.2s;}
 .buttonIcon:hover{color: #3c59ba;}
+.button:focus .buttonIcon{color: #3c59ba;}
