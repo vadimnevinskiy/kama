@@ -57,3 +57,24 @@
     grid-area: location;
     text-align: right;
 }
+.getUsersBtn{
+    text-align: center;
+    margin: 20px;
+}
+.getUsersBtn button{
+    background: #cccccc;
+    border: 1px solid #2B2B2B;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 0px;
+    width: 120px;
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+.getUsersBtn button:hover{
+    background: #2B2B2B;
+    color: #ffffff;
+}
