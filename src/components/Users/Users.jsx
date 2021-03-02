@@ -7,15 +7,47 @@ class Users extends React.Component {
 
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(responce => {
-                this.props.setUsers(responce.data.items)
+                this.props.setUsers(responce.data.items);
+                this.props.setTotalUsersCount(responce.data.totalCount);
             });
     }
 
+    onPageChanged(pageNumber) {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(responce => {
+                this.props.setUsers(responce.data.items)
+            });
+
+    }
+
     render() {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
         return (
             <div>
+                <div className={classes.paginator}>
+                    {
+                        pages.map(p => {
+
+                            if (this.props.currentPage === p) {
+                                return (
+                                    <span key={p} className={classes.selectedPage}>{p}</span>
+                                )
+                            } else if(this.props.currentPage != p) {
+                                return (
+                                    <span key={p} onClick={(e) => { this.onPageChanged(p) }}>{p}</span>
+                                )
+                            }
+
+                        })
+                    }
+                </div>
                 {
                     this.props.users.map(u => {
                         return (

@@ -8,6 +8,31 @@
     margin-bottom: 10px;
     background: #F9F9F9;
 }
+.paginator {
+    margin-bottom: 20px;
+}
+.paginator span{
+    font-size: 19px;
+    display: inline-block;
+    padding: 4px 0px 6px;
+    margin: 0px 3px 3px 0px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #DCE0E8;
+    border-radius: 4px;
+    width: 50px;
+    text-align: center;
+}
+.paginator span:hover{
+    background: #3c59ba;
+    color: #ffffff;
+}
+.paginator span.selectedPage{
+    font-weight: bold;
+    background: #3c59ba;
+    color: #ffffff;
+    cursor: auto;
+}
 .userImg{
     grid-area: img;
 }
