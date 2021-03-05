@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const WRITE_POST = 'WRITE-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
 
 let initialState = {
     posts: [
@@ -8,7 +10,8 @@ let initialState = {
         {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', likes: 2},
         {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
     ],
-    postText: ''
+    postText: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -31,6 +34,12 @@ const profileReducer = (state = initialState, action) => {
                 postText: action.post
             };
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
         default:
             return state;
     }
@@ -47,6 +56,13 @@ export const writingPostActionCreator = (value) => {
     return {
         type: WRITE_POST,
         post: value
+    }
+}
+
+export const setUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile
     }
 }
 
