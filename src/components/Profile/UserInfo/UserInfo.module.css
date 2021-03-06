@@ -1,7 +1,7 @@
 .user{
     display: grid;
     grid-template-areas: "ua ud uc";
-    grid-template-columns: 110px 10fr 10fr;
+    grid-template-columns: 110px 1fr 220px;
     margin: 0px 0px 30px 0px;
 }
 .avatar{
@@ -24,13 +24,18 @@
 .user__contacts{
     grid-area: uc;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
+    justify-content: flex-end;
     text-align: right;
 }
 .user__contacts a{
-    color: #2B2B2B;
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+}
+.user__contacts img{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 0px;
 }
 .user__name{
     margin: 0px 0px 0px 0px;
