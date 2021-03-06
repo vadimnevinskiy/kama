@@ -22,7 +22,7 @@ const App = (props) => {
             {/*<Sidebar sidebar={props.state.sidebar}/>*/}
             <div className="app-wrapper-content">
                 <Route path='/dialogs' render={ () => <DialogsContainer /> } />
-                <Route path='/profile' render={ () => <ProfileContainer /> } />
+                <Route path='/profile/:userId?' render={ () => <ProfileContainer /> } />
                 <Route path='/users' render={ () => <UsersContainer /> } />
                 {/*<Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogs} dispatch={props.dispatch} /> } />*/}
                 {/*<Route path='/profile' render={ () => <Profile profile={props.state.profile} dispatch={props.dispatch} /> } />*/}
