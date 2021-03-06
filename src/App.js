@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Header from './components/Header/Header';
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Footer from './components/Footer/Footer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
@@ -14,10 +14,11 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 
+
 const App = (props) => {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer />
             <SidebarContainer />
             {/*<Sidebar sidebar={props.state.sidebar}/>*/}
             <div className="app-wrapper-content">

@@ -4,8 +4,14 @@
     border-bottom: 1px solid #162145;
     margin-bottom: 10px;
     color: #ffffff;
-    padding: 10px 0px 0px 0px;
+    padding: 10px 10px 0px;
 }
 .container{
     margin: 0px auto;
+}
+.loginBlock{
+    float: right;
+}
+.loginBlock a{
+    color: #ffffff;
 }
