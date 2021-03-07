@@ -13,7 +13,22 @@
     border-radius: 50%;
     border: 1px solid #ccc;
 }
-
+.avatar__large{
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    border: 2px solid #162145;
+    box-shadow: 0px 0px 30px 5px #162145;
+    border-radius: 50%;
+    display: none;
+    transition: all 0.5s;
+}
+.avatar{
+    position: relative;
+}
+.avatar:hover .avatar__large{
+    display: inline-block;
+}
 .user__data{
     grid-area: ud;
     display: flex;

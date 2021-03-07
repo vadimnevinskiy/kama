@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Users.module.css';
 import avatar from '../../assets/images/avatar.png';
 import {NavLink} from 'react-router-dom';
-import * as axios from "axios";
+import {followAPI} from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -21,7 +21,7 @@ let Users = (props) => {
                             return (
                                 <span key={p} className={classes.selectedPage}>{p}</span>
                             )
-                        } else if (props.currentPage != p) {
+                        } else {
                             return (
                                 <span key={p}
                                       onClick={(e) => {
@@ -44,44 +44,33 @@ let Users = (props) => {
                                 </div>
                                 <div>
                                     {u.followed ?
-                                        <button className={classes.button + ' ' + classes.redBtn} onClick={() => {
+                                        <button className={classes.button + ' ' + classes.followingBtn} onClick={() => {
 
-                                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "23ab8b18-87cd-45c7-ba46-0b20b5014a46"
-                                                }
-                                            })
-                                                .then(responce => {
-                                                    if(responce.data.resultCode === 0){
+                                            followAPI.unfollow(u.id)
+                                                .then(data => {
+                                                    if (data.resultCode === 0) {
                                                         props.unfollow(u.id);
                                                     }
                                                 });
-
-                                        }}>Unfollow</button> :
-                                        <button className={classes.button + ' ' + classes.greenBtn} onClick={() => {
-
-                                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "23ab8b18-87cd-45c7-ba46-0b20b5014a46"
-                                                }
-                                            })
-                                                .then(responce => {
-                                                    if(responce.data.resultCode === 0){
+                                        }}>&nbsp;</button> :
+                                        <button className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
+                                            followAPI.follow(u.id)
+                                                .then(data => {
+                                                    if (data.resultCode === 0) {
                                                         props.follow(u.id);
                                                     }
                                                 });
-
-
-
-                                        }}>Follow</button>
+                                        }}>&nbsp;</button>
                                     }
                                 </div>
                             </div>
                             <div className={classes.userInfo}>
                                 <div className={classes.userStatus}>
-                                    <div><strong>{u.name}</strong></div>
+                                    <div>
+                                        <NavLink to={'/profile/' + u.id}>
+                                            <strong>{u.name}</strong>
+                                        </NavLink>
+                                    </div>
                                     <div className={classes.status}>{u.status}</div>
                                 </div>
                                 <div className={classes.userLocation}>

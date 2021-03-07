@@ -20,7 +20,8 @@ const UserInfo = (props) => {
         return (
             <div className={classes.user}>
                 <div className={classes.avatar}>
-                        <img className={classes.avatar__image} src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt=""/>
+                    <img className={classes.avatar__image} src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt=""/>
+                    <img className={classes.avatar__large} src={props.profile.photos.large != null ? props.profile.photos.large : avatar} alt=""/>
                 </div>
                 <div className={classes.user__data}>
                     <h3 className={classes.user__name}>{props.profile.fullName}</h3>

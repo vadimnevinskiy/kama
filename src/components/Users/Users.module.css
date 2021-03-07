@@ -3,7 +3,7 @@
     border-radius: 5px;
     display: grid;
     grid-template-areas: "img info";
-    grid-template-columns: 80px 13fr;
+    grid-template-columns: 120px 13fr;
     padding: 10px 20px;
     margin-bottom: 10px;
     background: #F9F9F9;
@@ -28,7 +28,6 @@
     color: #ffffff;
 }
 .paginator span.selectedPage{
-    font-weight: bold;
     background: #3c59ba;
     color: #ffffff;
     cursor: auto;
@@ -55,16 +54,46 @@
     cursor: pointer;
     font-size: 16px;
     padding: 5px 0px;
-    width: 80px;
+    width: 100px;
     text-align: center;
     margin: 0px auto;
     display: block;
     border-radius: 5px;
     transition: all 0.2s;
+    opacity: 0.7;
 }
 .button:hover{
     background: #2B2B2B;
     color: #ffffff;
+    opacity: 1;
+}
+.followingBtn{
+    background: darkseagreen;
+    opacity: 0.7;
+}
+.followingBtn:hover{
+    background: darkred;
+    box-shadow: 0px 0px 10px 1px red;
+}
+.followingBtn:before{
+    content: "Following";
+}
+.followingBtn:hover:before{
+    content: "Unfoloow";
+}
+.unfollowingBtn{
+    background: palevioletred;
+    opacity: 0.3;
+}
+.unfollowingBtn:hover{
+    background: darkgreen;
+    box-shadow: 0px 0px 10px 1px green;
+}
+.unfollowingBtn:before{
+    content: "Unfollowing";
+}
+.unfollowingBtn:hover:before{
+    content: "Follow";
 }
 .userInfo{
     grid-area: info;
@@ -75,8 +104,17 @@
 .userStatus{
     grid-area: status;
 }
+.userStatus a{
+    text-decoration: none;
+    color: #2B2B2B;
+}
+
 .status{
-    color: #cccccc;
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+.userInfo:hover .status{
+    opacity: 1;
 }
 .userLocation{
     grid-area: location;
