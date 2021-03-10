@@ -15,8 +15,8 @@
 }
 .avatar__large{
     position: absolute;
-    top: 50px;
-    left: 200px;
+    top: 0%;
+    left: 100%;
     border: 2px solid #162145;
     box-shadow: 0px 0px 30px 5px #162145;
     border-radius: 50%;
