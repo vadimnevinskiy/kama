@@ -67,6 +67,16 @@
     color: #ffffff;
     opacity: 1;
 }
+.button:disabled, .button:disabled:hover {
+    background: #cccccc;
+    color: #2B2B2B;
+    cursor: auto;
+    opacity: 1;
+    box-shadow: none;
+}
+.button:disabled:before, .button:disabled:hover:before {
+    content: "Progress...";
+}
 .followingBtn{
     background: darkseagreen;
     opacity: 0.7;

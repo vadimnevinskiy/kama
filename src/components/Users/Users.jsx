@@ -44,21 +44,24 @@ let Users = (props) => {
                                 </div>
                                 <div>
                                     {u.followed ?
-                                        <button className={classes.button + ' ' + classes.followingBtn} onClick={() => {
-
+                                        <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.followingBtn} onClick={() => {
+                                            props.toggleFollowingProgress(true, u.id);
                                             followAPI.unfollow(u.id)
                                                 .then(data => {
                                                     if (data.resultCode === 0) {
                                                         props.unfollow(u.id);
                                                     }
+                                                    props.toggleFollowingProgress(false, u.id);
                                                 });
                                         }}>&nbsp;</button> :
-                                        <button className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
+                                        <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
+                                            props.toggleFollowingProgress(true, u.id);
                                             followAPI.follow(u.id)
                                                 .then(data => {
                                                     if (data.resultCode === 0) {
                                                         props.follow(u.id);
                                                     }
+                                                    props.toggleFollowingProgress(false, u.id);
                                                 });
                                         }}>&nbsp;</button>
                                     }
@@ -68,7 +71,7 @@ let Users = (props) => {
                                 <div className={classes.userStatus}>
                                     <div>
                                         <NavLink to={'/profile/' + u.id}>
-                                            <strong>{u.name}</strong>
+                                            <strong>{u.name} {u.id}</strong>
                                         </NavLink>
                                     </div>
                                     <div className={classes.status}>{u.status}</div>
