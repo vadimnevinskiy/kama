@@ -17,6 +17,13 @@ const UserInfo = (props) => {
             <Preloader/>
         );
     } else {
+        let checkDomainPrefix = (domain) => {
+            if(domain.includes('http')){
+                return domain;
+            }else{
+                return 'http://' + domain;
+            }
+        }
         return (
             <div className={classes.user}>
                 <div className={classes.avatar}>
@@ -45,49 +52,49 @@ const UserInfo = (props) => {
                 <div className={classes.user__contacts}>
                     {
                         props.profile.contacts.facebook ?
-                            <a href={`${props.profile.contacts.facebook}`} title={props.profile.contacts.facebook} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.facebook)} title={props.profile.contacts.facebook} target="_blank">
                                 <img src={fb} alt={props.profile.contacts.facebook} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.website ?
-                            <a href={`${props.profile.contacts.website}`} title={props.profile.contacts.website} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.website)} title={props.profile.contacts.website} target="_blank">
                                 <img src={website} alt={props.profile.contacts.website} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.vk ?
-                            <a href={`${props.profile.contacts.vk}`} title={props.profile.contacts.vk} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.vk)} title={props.profile.contacts.vk} target="_blank">
                                 <img src={vk} alt={props.profile.contacts.vk} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.twitter ?
-                            <a href={`${props.profile.contacts.twitter}`} titl={props.profile.contacts.twitter} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.twitter)} titl={props.profile.contacts.twitter} target="_blank">
                                 <img src={twitter} alt={props.profile.contacts.twitter} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.youtube ?
-                            <a href={`${props.profile.contacts.youtube}`} title={props.profile.contacts.youtube} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.youtube)} title={props.profile.contacts.youtube} target="_blank">
                                 <img src={youtube} alt={props.profile.contacts.youtube} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.github ?
-                            <a href={`${props.profile.contacts.github}`} title={props.profile.contacts.github} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.github)} title={props.profile.contacts.github} target="_blank">
                                 <img src={github} alt={props.profile.contacts.github} />
                             </a> :
                             ''
                     }
                     {
                         props.profile.contacts.mainLink ?
-                            <a href={`${props.profile.contacts.mainLink}`} title={props.profile.contacts.mainLink} target="_blank">
+                            <a href={checkDomainPrefix(props.profile.contacts.mainLink)} title={props.profile.contacts.mainLink} target="_blank">
                                 <img src={link} alt={props.profile.contacts.mainLink} />
                             </a> :
                             ''
