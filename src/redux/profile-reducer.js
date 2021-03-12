@@ -1,3 +1,6 @@
+import {authAPI, profileAPI} from "../api/api";
+import {setAuthUserData} from "./auth-reducer";
+
 const ADD_POST = 'ADD-POST';
 const WRITE_POST = 'WRITE-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -66,4 +69,14 @@ export const setUserProfile = (profile) => {
     }
 }
 
+
+// THUNK CREATORS
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
+        });
+    }
+}
 export default profileReducer;

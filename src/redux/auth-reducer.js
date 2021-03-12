@@ -1,3 +1,6 @@
+import {authAPI, usersAPI} from "../api/api";
+import {setTotalUsersCount, setUsers, toggleIsFetching} from "./users-reducer";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
 
@@ -46,5 +49,18 @@ export const toogleIsFetching = (isFetching) => {
     }
 }
 
+
+// THUNK CREATORS
+export const authMe = () => {
+    return (dispatch) => {
+        authAPI.authMe()
+            .then(data => {
+                if(data.resultCode === 0){
+                    let {id, login, email} = data.data;
+                    dispatch(setAuthUserData(id, email, login));
+                }
+            });
+    }
+}
 
 export default authReducer;

@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Users.module.css';
 import avatar from '../../assets/images/avatar.png';
 import {NavLink} from 'react-router-dom';
-import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -73,9 +72,6 @@ let Users = (props) => {
                     )
                 })
             }
-            {/*<div className={classes.getUsersBtn}>*/}
-            {/*    <button onClick={this.getUsers}>Get Users</button>*/}
-            {/*</div>*/}
         </div>
     )
 }
