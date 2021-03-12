@@ -30,9 +30,7 @@ export const usersAPI = {
                     return response.data
                 }
             )
-    }
-}
-export const profileAPI = {
+    },
     getProfile(id) {
         return instance.get(`profile/` + id)
             .then(response => {
@@ -41,6 +39,7 @@ export const profileAPI = {
             )
     }
 }
+
 
 export const authAPI = {
     authMe() {
