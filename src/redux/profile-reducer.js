@@ -70,12 +70,10 @@ export const setUserProfile = (profile) => {
 
 
 // THUNK CREATORS
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        usersAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-        });
-    }
+export const getProfile = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId)
+        .then(data => {
+            dispatch(setUserProfile(data));
+    });
 }
 export default profileReducer;
