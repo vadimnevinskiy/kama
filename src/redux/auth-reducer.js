@@ -20,13 +20,12 @@ const authReducer = (state = initialState, action) => {
                 isAuth: true
             }
         case TOOGLE_IS_FETCHING:
-            return { ...state, isFetching: action.isFetching }
+            return {...state, isFetching: action.isFetching}
         default:
             return state;
     }
 
 }
-
 
 
 export const setAuthUserData = (userId, email, login) => {
@@ -50,16 +49,14 @@ export const toogleIsFetching = (isFetching) => {
 
 
 // THUNK CREATORS
-export const authMe = () => {
-    return (dispatch) => {
-        authAPI.authMe()
-            .then(data => {
-                if(data.resultCode === 0){
-                    let {id, login, email} = data.data;
-                    dispatch(setAuthUserData(id, email, login));
-                }
-            });
-    }
+export const authMe = () => (dispatch) => {
+    authAPI.authMe()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let {id, login, email} = data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
+        });
 }
 
 export default authReducer;
