@@ -7,7 +7,6 @@ import {authAPI, usersAPI} from "../../api/api";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        // this.props.toogleIsFetching(true);
         authAPI.authMe(this.props.currentPage, this.props.pageSize)
             .then(data => {
                 if(data.resultCode === 0){

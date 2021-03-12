@@ -16,18 +16,7 @@ export const usersAPI = {
                     return response.data
                 }
             )
-    }
-}
-export const profileAPI = {
-    getProfile(id) {
-        return instance.get(`profile/` + id)
-            .then(response => {
-                    return response.data
-                }
-            )
-    }
-}
-export const followAPI = {
+    },
     unfollow(id) {
         return instance.delete(`follow/` + id)
             .then(response => {
@@ -42,6 +31,31 @@ export const followAPI = {
                 }
             )
     }
+}
+export const profileAPI = {
+    getProfile(id) {
+        return instance.get(`profile/` + id)
+            .then(response => {
+                    return response.data
+                }
+            )
+    }
+}
+export const followAPI = {
+    // unfollow(id) {
+    //     return instance.delete(`follow/` + id)
+    //         .then(response => {
+    //                 return response.data
+    //             }
+    //         )
+    // },
+    // follow(id) {
+    //     return instance.post(`follow/` + id)
+    //         .then(response => {
+    //                 return response.data
+    //             }
+    //         )
+    // }
 }
 export const authAPI = {
     authMe() {

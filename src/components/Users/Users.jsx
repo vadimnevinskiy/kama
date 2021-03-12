@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Users.module.css';
 import avatar from '../../assets/images/avatar.png';
 import {NavLink} from 'react-router-dom';
-import {followAPI} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -45,24 +45,10 @@ let Users = (props) => {
                                 <div>
                                     {u.followed ?
                                         <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.followingBtn} onClick={() => {
-                                            props.toggleFollowingProgress(true, u.id);
-                                            followAPI.unfollow(u.id)
-                                                .then(data => {
-                                                    if (data.resultCode === 0) {
-                                                        props.unfollow(u.id);
-                                                    }
-                                                    props.toggleFollowingProgress(false, u.id);
-                                                });
+                                            props.unfollow(u.id);
                                         }}>&nbsp;</button> :
                                         <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
-                                            props.toggleFollowingProgress(true, u.id);
-                                            followAPI.follow(u.id)
-                                                .then(data => {
-                                                    if (data.resultCode === 0) {
-                                                        props.follow(u.id);
-                                                    }
-                                                    props.toggleFollowingProgress(false, u.id);
-                                                });
+                                            props.follow(u.id);
                                         }}>&nbsp;</button>
                                     }
                                 </div>
