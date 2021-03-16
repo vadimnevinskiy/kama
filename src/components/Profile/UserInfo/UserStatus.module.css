@@ -1,0 +1,32 @@
+.userStatus{
+
+}
+.statusBox{
+    width: 300px
+}
+.status{
+    border-bottom: 4px solid #000000;
+}
+.statusField{
+    width: 270px;
+    display: inline;
+    border: 1px solid #cccccc;
+    border-radius: 0px;
+    height: 23px;
+    outline: none;
+}
+.userIcon{
+    cursor: pointer;
+    vertical-align: -8px;
+    opacity: 0.1;
+    transition: all 0.2s;
+    width: 20px;
+}
+.saveIcon{
+    font-size: 35px;
+    vertical-align: -13px;
+    opacity: 0.4;
+}
+.userIcon:hover{
+    opacity: 0.5;
+}
