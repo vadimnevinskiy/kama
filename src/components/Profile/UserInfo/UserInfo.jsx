@@ -11,6 +11,7 @@ import link from "../../../assets/images/link.png";
 import avatar from "../../../assets/images/avatar.png";
 import {NavLink} from "react-router-dom";
 import UserStatus from "./UserStatus";
+import {updateStatus} from "../../../redux/profile-reducer";
 
 const UserInfo = (props) => {
     if (!props.profile) {
@@ -52,7 +53,10 @@ const UserInfo = (props) => {
                         <br/>
                         <span className={`${classes.userIcon} material-icons`}>mode_comment</span>
                         {props.profile.lookingForAJobDescription}<br/>
-                        <UserStatus status={"Hello my friends!"} />
+                        <UserStatus
+                            status={props.status}
+                            updateStatus={props.updateStatus}
+                        />
                         {/*<span className={classes.onlineStatus}>Заходил 6 минут назад</span>*/}
                     </div>
                 </div>

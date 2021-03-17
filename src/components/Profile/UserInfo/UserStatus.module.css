@@ -2,10 +2,18 @@
 
 }
 .statusBox{
-    width: 300px
+    width: 346px;
+    padding: 0px 20px 7px;
+    border: 1px solid #ffffff;
+}
+.statusBoxActive{
+    width: 346px;
+    padding: 7px 0px 7px 10px;
+    border: 1px solid #ccc;
 }
 .status{
     border-bottom: 4px solid #000000;
+    line-height: 35px;
 }
 .statusField{
     width: 270px;
@@ -24,6 +32,14 @@
 }
 .saveIcon{
     font-size: 35px;
+    width: 30px;
+    vertical-align: -13px;
+    opacity: 0.4;
+    margin: 0px 3px 0px 3px;
+}
+.closeIcon{
+    font-size: 35px;
+    width: 30px;
     vertical-align: -13px;
     opacity: 0.4;
 }

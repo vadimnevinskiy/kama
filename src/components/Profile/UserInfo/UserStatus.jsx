@@ -3,7 +3,8 @@ import classes from './UserStatus.module.css';
 
 class UserStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     activateEditMode = () => {
@@ -11,14 +12,19 @@ class UserStatus extends React.Component {
             editMode: true
         })
     }
-    deActivateEditMode = () => {
+    deActivateEditMode = (e) => {
         this.setState({
             editMode: false
         })
     }
 
-    onChangeStatus(value) {
-
+    onChangeStatus = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        });
+    }
+    saveStatus = () => {
+        this.props.updateStatus(this.state.status);
     }
 
     render() {
@@ -26,14 +32,22 @@ class UserStatus extends React.Component {
             <div className={classes.userStatus} >
                 {!this.state.editMode &&
                     <div className={classes.statusBox}>
-                        <span className={classes.status}>{this.props.status}</span>
+                        <span className={classes.status}>{this.props.status || '****************'}</span>
                         <span onClick={ this.activateEditMode } className={`${classes.userIcon} material-icons`}>border_color</span>
                     </div>
                 }
                 {this.state.editMode &&
-                    <div className={classes.statusBox}>
-                        <input autoFocus={true} onBlur={ this.deActivateEditMode } className={classes.statusField} type="text" value={this.props.status} onChange={this.onChangeStatus}/>
-                        <span className={`${classes.userIcon} ${classes.saveIcon} material-icons`}>save</span>
+                    <div className={classes.statusBoxActive}>
+                        <input
+                            className={classes.statusField}
+                            type="text"
+                            autoFocus={true}
+                            value={this.state.status}
+                            onChange={this.onChangeStatus}
+                            // onBlur={ this.deActivateEditMode }
+                        />
+                        <span className={`${classes.userIcon} ${classes.saveIcon} material-icons`} onClick={this.saveStatus}>save</span>
+                        <span className={`${classes.userIcon} ${classes.closeIcon} material-icons`} onClick={this.deActivateEditMode}>close</span>
                     </div>
                 }
             </div>

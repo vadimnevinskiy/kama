@@ -26,8 +26,6 @@ const App = (props) => {
                 <Route path='/dialogs' render={ () => <DialogsContainer /> } />
                 <Route path='/profile/:userId?' render={ () => <ProfileContainer /> } />
                 <Route path='/users' render={ () => <UsersContainer /> } />
-                {/*<Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogs} dispatch={props.dispatch} /> } />*/}
-                {/*<Route path='/profile' render={ () => <Profile profile={props.state.profile} dispatch={props.dispatch} /> } />*/}
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
