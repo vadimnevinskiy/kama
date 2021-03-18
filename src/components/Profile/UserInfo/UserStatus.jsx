@@ -36,13 +36,9 @@ class UserStatus extends React.Component {
                 status: this.props.status
             })
         }
-
-
-        console.log("componentDidUpdate: ");
     }
 
     render() {
-        console.log("render");
         return (
             <div className={classes.userStatus} >
                 {!this.state.editMode &&
