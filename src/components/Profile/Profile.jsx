@@ -3,7 +3,6 @@ import classes from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import UserInfo from './UserInfo/UserInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import {updateStatus} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
     return (

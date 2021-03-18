@@ -10,12 +10,12 @@ class UserStatus extends React.Component {
     activateEditMode = () => {
         this.setState({
             editMode: true
-        })
+        });
     }
-    deActivateEditMode = (e) => {
+    deActivateEditMode = () => {
         this.setState({
             editMode: false
-        })
+        });
     }
 
     onChangeStatus = (e) => {
@@ -24,6 +24,9 @@ class UserStatus extends React.Component {
         });
     }
     saveStatus = () => {
+        this.setState({
+            editMode: false
+        });
         this.props.updateStatus(this.state.status);
     }
 

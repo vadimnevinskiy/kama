@@ -57,16 +57,17 @@ export const profileAPI = {
     },
     getStatus(id) {
         return instance.get(`profile/status/` + id)
-            .then(response => {
-                    return response.data
-                }
-            )
+            // .then(response => {
+            //         return response.data
+            //     }
+            // )
     },
     updateStatus(statusText) {
         return instance.put(`profile/status/`, {status: statusText})
-            .then(response => {
-                    return response.data
-                }
-            )
+            // .then(response => {
+            //     debugger
+            //         return response.data
+            //     }
+            // )
     }
 }
