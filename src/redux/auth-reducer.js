@@ -3,6 +3,8 @@ import {authAPI} from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA';
 const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
 
+const LOGIN = 'LOGIN';
+
 let initialState = {
     userId: null,
     email: null,
@@ -21,6 +23,8 @@ const authReducer = (state = initialState, action) => {
             }
         case TOOGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
+        case LOGIN:
+            return {...state, login: action.login}
         default:
             return state;
     }
@@ -38,7 +42,17 @@ export const setAuthUserData = (userId, email, login) => {
         }
     }
 }
-
+export const setLoginData = (email, password, rememberMe, captcha) => {
+    return {
+        type: LOGIN,
+        data: {
+            email,
+            password,
+            rememberMe,
+            captcha
+        }
+    }
+}
 
 export const toogleIsFetching = (isFetching) => {
     return {
@@ -59,4 +73,14 @@ export const authMe = () => (dispatch) => {
         });
 }
 
+// THUNK CREATORS
+export const login = () => (dispatch) => {
+    authAPI.login()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let {email, password, rememberMe, captcha} = data.data;
+                dispatch(setLoginData(email, password, rememberMe, captcha));
+            }
+        });
+}
 export default authReducer;

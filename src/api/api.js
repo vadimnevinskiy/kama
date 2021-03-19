@@ -45,6 +45,14 @@ export const authAPI = {
                     return response.data
                 }
             )
+    },
+    login(loginData) {
+        debugger
+        return instance.post(`/auth/login`, {email: loginData.email, password: loginData.password, rememberMe: loginData.rememberMe, captcha: loginData.captcha})
+            .then(response => {
+                    return response.data
+                }
+            )
     }
 }
 export const profileAPI = {

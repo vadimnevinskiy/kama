@@ -1,15 +1,14 @@
 import React from 'react';
 import classes from './Login.module.css';
 import {Form, Field} from 'react-final-form';
+import {authAPI} from "../../api/api";
 
 
-// const onSubmit = (values) => {
-//     window.alert(JSON.stringify(values, 0, 2))
-// }
+
 const validate = (values) => {
     const errors = {}
-    if (!values.login) {
-        errors.login = 'Required'
+    if (!values.email) {
+        errors.email = 'Required'
     }
     if (!values.password) {
         errors.password = 'Required'
@@ -27,10 +26,10 @@ const LoginForm = (props) => {
                 render={({handleSubmit, form, submitting, pristine, values}) => (
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <Field name="login">
+                            <Field name="email">
                                 {({input, meta}) => (
                                     <div>
-                                        <input {...input} type="text" placeholder="Login" />
+                                        <input {...input} type="text" placeholder="Email" />
                                         <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>
                                     </div>
                                 )}
@@ -71,6 +70,7 @@ const LoginForm = (props) => {
 const Login = (props) => {
     const onSubmit = (formData) => {
         console.log(formData)
+        authAPI.login(formData)
     }
     return (
         <div className={classes.login}>
