@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const WRITE_MESSAGE = 'WRITE-MESSAGE';
 
 let initialState = {
     users: [
@@ -15,8 +14,7 @@ let initialState = {
         {id: 0, text: 'Lorem ipsum dolor sit amet.'},
         {id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.'},
         {id: 2, text: 'Lorem ipsum dolor.'}
-    ],
-    messageText: ''
+    ]
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -24,18 +22,11 @@ const dialogsReducer = (state = initialState, action) => {
         case ADD_MESSAGE: {
             let newMessage = {
                 id: state.messages + 1,
-                text: state.messageText,
+                text: action.message,
             }
             return {
                 ...state,
-                messageText: '',
                 messages: [...state.messages, newMessage]
-            };
-        }
-        case WRITE_MESSAGE: {
-            return {
-                ...state,
-                messageText: action.message
             };
         }
         default:
@@ -43,14 +34,9 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => {
+export const addMessageActionCreator = (value) => {
     return {
-        type: ADD_MESSAGE
-    }
-}
-export const writingMessageActionCreator = (value) => {
-    return {
-        type: WRITE_MESSAGE,
+        type: ADD_MESSAGE,
         message: value
     }
 }

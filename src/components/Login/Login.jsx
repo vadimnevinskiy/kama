@@ -5,26 +5,25 @@ import {authAPI} from "../../api/api";
 
 
 
-const validate = (values) => {
-    const errors = {}
-    if (!values.email) {
-        errors.email = 'Required'
-    }
-    if (!values.password) {
-        errors.password = 'Required'
-    }
-    return errors
-}
-
-
 const LoginForm = (props) => {
+    const validate = (values) => {
+        const errors = {}
+        if (!values.email) {
+            errors.email = 'Required'
+        }
+        if (!values.password) {
+            errors.password = 'Required'
+        }
+        return errors
+    }
+
     return (
         <div className={classes.login}>
             <Form
                 onSubmit={props.onSubmit}
                 validate={validate}
                 render={({handleSubmit, form, submitting, pristine, values}) => (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className={classes.form}>
                         <div>
                             <Field name="email">
                                 {({input, meta}) => (
@@ -74,7 +73,7 @@ const Login = (props) => {
     }
     return (
         <div className={classes.login}>
-            <h1>LOGIN</h1>
+            <h1 className={classes.title}>LOGIN</h1>
             <LoginForm onSubmit={onSubmit}/>
         </div>
     )

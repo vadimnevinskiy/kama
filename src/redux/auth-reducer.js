@@ -24,7 +24,11 @@ const authReducer = (state = initialState, action) => {
         case TOOGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
         case LOGIN:
-            return {...state, login: action.login}
+            return {
+                ...state,
+                login: action.login,
+                isAuth: true
+            }
         default:
             return state;
     }

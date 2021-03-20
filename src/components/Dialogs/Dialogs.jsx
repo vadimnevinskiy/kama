@@ -2,10 +2,10 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {Redirect} from "react-router-dom";
-
+import {Form, Field} from 'react-final-form';
 
 const Dialogs = (props) => {
+
     let dialogElements = props.dialogs.users.map(item => {
         return (
             <DialogItem name={item.name} id={item.id} key={item.id}/>
@@ -14,37 +14,43 @@ const Dialogs = (props) => {
 
     let messageElements = props.dialogs.messages.map(m => <MessageItem message={m.text} key={m.id}/>);
 
-
-    let writingMessage = (e) => {
-        let postText = e.target.value;
-        props.updateDialogMessage(postText);
+    const onSubmit = (values) => {
+        props.addMessage(values.messageText);
     }
-    let AddPost = () => {
-        props.addMessage();
-    }
-
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsList}>
-                { dialogElements }
+                {dialogElements}
             </div>
             <div className={classes.messagesList}>
-                { messageElements }
-
-
-                <div className={classes.form}>
-                    <div className={classes.fieldBox}>
-                        <textarea className={classes.field} onChange={writingMessage} value={props.messageText} ></textarea>
-                    </div>
-                    <div className={classes.buttonBox}>
-                        <button className={classes.button} onClick={ AddPost }>
-                            <span className={`${classes.buttonIcon} material-icons`}>send</span>
-                        </button>
-                    </div>
-                </div>
-
+                {messageElements}
+                <AddMessageForm onSubmit = {onSubmit} />
             </div>
         </div>
+    )
+}
+
+const AddMessageForm = (props) => {
+    return (
+        <Form
+            onSubmit={props.onSubmit}
+            render={({handleSubmit, form, submitting, pristine, values}) => (
+                <form onSubmit={handleSubmit}>
+                    <div className={classes.form}>
+                        <div className={classes.fieldBox}>
+                            <Field component="textarea" name="messageText" placeholder="Enter message.."
+                                   className={classes.field}/>
+                            {/*<textarea className={classes.field} onChange={writingMessage} value={props.messageText}></textarea>*/}
+                        </div>
+                        <div className={classes.buttonBox}>
+                            <button className={classes.button}>
+                                <span className={`${classes.buttonIcon} material-icons`}>send</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            )}
+        />
     )
 }
 

@@ -2,12 +2,11 @@
 
 }
 
-
-h1 {
+.title {
     text-align: center;
     color: #222;
 }
-form {
+.form {
     max-width: 400px;
     margin: 10px auto;
     border: 1px solid #ccc;
@@ -15,20 +14,19 @@ form {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
 }
-form div {
+.form div {
     margin: 0px 0px 15px 0px;
 }
-form label {
+.form label {
     color: #333;
     width: 110px;
     font-size: 1em;
     line-height: 32px;
 }
-
-form input[type="text"],
-form input[type="password"],
-form select,
-form textarea {
+.form input[type="text"],
+.form input[type="password"],
+.form select,
+.form textarea {
     width: 98%;
     padding: 10px 1%;
     font-size: 1em;
@@ -36,28 +34,23 @@ form textarea {
     border-radius: 2px;
     outline: none;
 }
-
-form input[type='checkbox'] {
+.form input[type='checkbox'] {
     margin-top: 7px;
 }
-
-form input {
+.form input {
     margin-right: 3px;
 }
-
-form span {
+.form span {
     color: #800;
     font-style: italic;
     font-size: 12px;
 }
-
-form .buttons {
+.form .buttons {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     margin-top: 15px;
 }
-
 pre {
     border: 1px solid #ccc;
     background: rgba(0, 0, 0, 0.1);
