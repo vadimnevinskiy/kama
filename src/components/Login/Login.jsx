@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './Login.module.css';
 import {Form, Field} from 'react-final-form';
 import {authAPI} from "../../api/api";
+import {InputPassword, InputText} from "../common/formControls/FormControls";
+import {composeValidators, maxValue, required} from "../../utils/validators/validators";
 
 
 
@@ -25,24 +27,36 @@ const LoginForm = (props) => {
                 render={({handleSubmit, form, submitting, pristine, values}) => (
                     <form onSubmit={handleSubmit} className={classes.form}>
                         <div>
-                            <Field name="email">
-                                {({input, meta}) => (
-                                    <div>
-                                        <input {...input} type="text" placeholder="Email" />
-                                        <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>
-                                    </div>
-                                )}
-                            </Field>
+                            <Field
+                                component={InputText}
+                                name="email"
+                                placeholder="Email"
+                                validate={composeValidators(required, maxValue(50))}
+                            />
+                            {/*<Field name="email">*/}
+                            {/*    {({input, meta}) => (*/}
+                            {/*        <div>*/}
+                            {/*            <input {...input} type="text" placeholder="Email" />*/}
+                            {/*            <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>*/}
+                            {/*        </div>*/}
+                            {/*    )}*/}
+                            {/*</Field>*/}
                         </div>
                         <div>
-                            <Field name="password">
-                                {({input, meta}) => (
-                                    <div>
-                                        <input {...input} type="password" placeholder="Password" />
-                                        <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>
-                                    </div>
-                                )}
-                            </Field>
+                            <Field
+                                component={InputPassword}
+                                name="password"
+                                placeholder="Password"
+                                validate={composeValidators(required, maxValue(10))}
+                            />
+                            {/*<Field name="password">*/}
+                            {/*    {({input, meta}) => (*/}
+                            {/*        <div>*/}
+                            {/*            <input {...input} type="password" placeholder="Password" />*/}
+                            {/*            <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>*/}
+                            {/*        </div>*/}
+                            {/*    )}*/}
+                            {/*</Field>*/}
                         </div>
                         <div>
                             <label>Remember me</label>
@@ -53,12 +67,6 @@ const LoginForm = (props) => {
                             />
                         </div>
                         <button type="submit" disabled={submitting}>Submit</button>
-                        {/*<button*/}
-                        {/*    type="button"*/}
-                        {/*    onClick={form.reset}*/}
-                        {/*    disabled={submitting || pristine}*/}
-                        {/*>Reset</button>*/}
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
                     </form>
                 )}
             />

@@ -3,6 +3,8 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Form, Field} from 'react-final-form';
+import {Textarea} from "../common/formControls/FormControls";
+import {composeValidators, maxValue, required} from "../../utils/validators/validators";
 
 const Dialogs = (props) => {
 
@@ -38,9 +40,12 @@ const AddMessageForm = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div className={classes.form}>
                         <div className={classes.fieldBox}>
-                            <Field component="textarea" name="messageText" placeholder="Enter message.."
-                                   className={classes.field}/>
-                            {/*<textarea className={classes.field} onChange={writingMessage} value={props.messageText}></textarea>*/}
+                            <Field
+                                component={Textarea}
+                                name="messageText"
+                                placeholder="Enter message.."
+                                validate={composeValidators(required, maxValue(80))}
+                            />
                         </div>
                         <div className={classes.buttonBox}>
                             <button className={classes.button}>

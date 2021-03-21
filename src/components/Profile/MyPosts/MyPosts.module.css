@@ -6,15 +6,6 @@
     grid-gap: 10px;
 }
 .fieldBox{margin: 0px 0px 0px 0px;}
-.field{
-    width: 98%;
-    height: 47px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    outline:none;
-    font-size: 18px;
-    resize: none;
-}
 
 .buttonBox{
     text-align: right;

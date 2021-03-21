@@ -1,0 +1,28 @@
+.formControl{
+
+}
+.formControl.error input,
+.formControl.error textarea {
+    border: 1px solid red;
+}
+.formControl.error span {
+    color: red;
+}
+.fieldTextarea{
+    width: 98%;
+    height: 47px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    outline:none;
+    font-size: 18px;
+    resize: none;
+}
+.fieldInput{
+    width: 98%;
+    height: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    outline:none;
+    font-size: 18px;
+    resize: none;
+}

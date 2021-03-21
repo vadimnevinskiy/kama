@@ -14,7 +14,7 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
 }
-.form div {
+.form > div {
     margin: 0px 0px 15px 0px;
 }
 .form label {

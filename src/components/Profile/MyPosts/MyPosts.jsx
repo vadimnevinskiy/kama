@@ -2,6 +2,10 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Posts from "./Post/Posts";
 import {Form, Field} from 'react-final-form';
+import {Textarea} from "../../common/formControls/FormControls";
+import {composeValidators, maxValue, required} from "../../../utils/validators/validators";
+
+
 
 const MyPosts = (props) => {
     let postList = props.posts.map(item => {
@@ -16,10 +20,11 @@ const MyPosts = (props) => {
     return (
         <div className={classes.posts}>
             {postList}
-            <AddPostForm onSubmit={onSubmit} />
+            <AddPostForm onSubmit={onSubmit}/>
         </div>
     );
 }
+
 
 
 const AddPostForm = (props) => {
@@ -30,9 +35,12 @@ const AddPostForm = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div className={classes.form}>
                         <div className={classes.fieldBox}>
-                            <Field component="textarea" name="postText" placeholder="Enter post.."
-                                   className={classes.field}/>
-                            {/*<textarea className={classes.field} onChange={onWritingMessage} value={props.postText}/>*/}
+                            <Field
+                                component={Textarea}
+                                name="postText"
+                                placeholder="Enter post.."
+                                validate={composeValidators(required, maxValue(80))}
+                            />
                         </div>
                         <div className={classes.buttonBox}>
                             <button className={classes.button}>
