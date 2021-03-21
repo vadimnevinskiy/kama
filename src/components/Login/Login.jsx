@@ -4,6 +4,9 @@ import {Form, Field} from 'react-final-form';
 import {authAPI} from "../../api/api";
 import {InputPassword, InputText} from "../common/formControls/FormControls";
 import {composeValidators, maxValue, required} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+import {Redirect} from "react-router-dom";
 
 
 
@@ -33,14 +36,6 @@ const LoginForm = (props) => {
                                 placeholder="Email"
                                 validate={composeValidators(required, maxValue(50))}
                             />
-                            {/*<Field name="email">*/}
-                            {/*    {({input, meta}) => (*/}
-                            {/*        <div>*/}
-                            {/*            <input {...input} type="text" placeholder="Email" />*/}
-                            {/*            <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>*/}
-                            {/*        </div>*/}
-                            {/*    )}*/}
-                            {/*</Field>*/}
                         </div>
                         <div>
                             <Field
@@ -49,14 +44,6 @@ const LoginForm = (props) => {
                                 placeholder="Password"
                                 validate={composeValidators(required, maxValue(10))}
                             />
-                            {/*<Field name="password">*/}
-                            {/*    {({input, meta}) => (*/}
-                            {/*        <div>*/}
-                            {/*            <input {...input} type="password" placeholder="Password" />*/}
-                            {/*            <span>{meta.error && meta.touched && <i>{meta.error}</i>}&nbsp;</span>*/}
-                            {/*        </div>*/}
-                            {/*    )}*/}
-                            {/*</Field>*/}
                         </div>
                         <div>
                             <label>Remember me</label>
@@ -76,15 +63,22 @@ const LoginForm = (props) => {
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
-        authAPI.login(formData)
+        // console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha )
     }
-    return (
-        <div className={classes.login}>
-            <h1 className={classes.title}>LOGIN</h1>
-            <LoginForm onSubmit={onSubmit}/>
-        </div>
-    )
+    if(props.isAuth){
+        return <Redirect to={"/profile"} />
+    } else {
+        return (
+            <div className={classes.login}>
+                <h1 className={classes.title}>LOGIN</h1>
+                <LoginForm onSubmit={onSubmit}/>
+            </div>
+        )
+    }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+export default connect(mapStateToProps, {login})(Login);

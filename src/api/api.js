@@ -46,12 +46,18 @@ export const authAPI = {
                 }
             )
     },
-    login(loginData) {
-        return instance.post(`/auth/login`, {email: loginData.email, password: loginData.password, rememberMe: loginData.rememberMe, captcha: loginData.captcha})
-            .then(response => {
-                    return response.data
-                }
-            )
+    // login(loginData) {
+    //     return instance.post(`/auth/login`, {email: loginData.email, password: loginData.password, rememberMe: loginData.rememberMe, captcha: loginData.captcha})
+    //         .then(response => {
+    //                 return response.data
+    //             }
+    //         )
+    // }
+    login(email, password, rememberMe=false, captcha = false) {
+        return instance.post(`/auth/login`, {email, password, rememberMe, captcha});
+    },
+    logout() {
+        return instance.delete(`/auth/login`);
     }
 }
 export const profileAPI = {
