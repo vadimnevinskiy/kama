@@ -1,4 +1,6 @@
 import * as axios from "axios";
+import {FORM_ERROR} from "final-form";
+import {authMe} from "../redux/auth-reducer";
 
 
 const instance = axios.create({
@@ -46,18 +48,19 @@ export const authAPI = {
                 }
             )
     },
-    // login(loginData) {
-    //     return instance.post(`/auth/login`, {email: loginData.email, password: loginData.password, rememberMe: loginData.rememberMe, captcha: loginData.captcha})
-    //         .then(response => {
-    //                 return response.data
-    //             }
-    //         )
-    // }
     login(email, password, rememberMe=false, captcha = false) {
-        return instance.post(`/auth/login`, {email, password, rememberMe, captcha});
+        return instance.post(`/auth/login`, {email, password, rememberMe, captcha})
+            // .then(response => {
+            //     return response.data;
+            // })
     },
     logout() {
         return instance.delete(`/auth/login`);
+    }
+}
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get(`security/get-captcha-url`)
     }
 }
 export const profileAPI = {

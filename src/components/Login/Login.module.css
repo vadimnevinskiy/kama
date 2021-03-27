@@ -58,3 +58,9 @@ pre {
     padding: 20px;
 }
 
+.serverError{
+    color: red;
+}
+.captcha{
+
+}
