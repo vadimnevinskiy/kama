@@ -25,7 +25,7 @@
 }
 .userIcon{
     cursor: pointer;
-    vertical-align: -8px;
+    vertical-align: -7px;
     opacity: 0.1;
     transition: all 0.2s;
     width: 20px;

@@ -10,11 +10,18 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 class ProfileContainer extends React.Component{
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if(!userId){
+        if (userId) {
+            this.props.getProfile(userId);
+            this.props.getStatus(userId);
+        } else {
             userId = this.props.authorizesUserId;
+            if (!userId){
+                this.props.history.push('/login');
+            } else {
+                this.props.getProfile(userId);
+                this.props.getStatus(userId);
+            }
         }
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
     }
 
     render () {
@@ -35,19 +42,12 @@ let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
-        authorizesUserId: state.auth.userId,
-        isAuth: state.auth.isAuth
+        authorizesUserId: state.auth.userId
     }
 }
-
-
-
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-// export default connect(mapStateToProps, {getProfile})(WithUrlDataContainerComponent);
 
 export default compose(
     connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
     withRouter,
-    withAuthRedirect
+    // withAuthRedirect
 )(ProfileContainer);

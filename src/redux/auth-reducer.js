@@ -57,7 +57,7 @@ export const setCaptcha = (captchaUrl) => {
 
 // THUNK CREATORS
 export const authMe = () => (dispatch) => {
-    authAPI.authMe()
+    return authAPI.authMe()
         .then(data => {
             if (data.resultCode === 0) {
                 let {id, login, email} = data.data;

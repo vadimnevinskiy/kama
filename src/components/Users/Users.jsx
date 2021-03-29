@@ -11,6 +11,7 @@ let Users = (props) => {
             pages.push(i);
         }
     }
+
     return (
         <div>
             <div className={classes.paginator}>
@@ -38,19 +39,22 @@ let Users = (props) => {
                             <div className={classes.userImg}>
                                 <div className={classes.photo}>
                                     <NavLink to={'/profile/' + u.id}>
-                                        <img src={u.photos.small != null ? u.photos.small : avatar} alt=""/> :
+                                        <img src={u.photos.small != null ? u.photos.small : avatar} alt=""/>
                                     </NavLink>
                                 </div>
-                                <div>
-                                    {u.followed ?
-                                        <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.followingBtn} onClick={() => {
-                                            props.unfollow(u.id);
-                                        }}>&nbsp;</button> :
-                                        <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
-                                            props.follow(u.id);
-                                        }}>&nbsp;</button>
-                                    }
-                                </div>
+                                {
+                                    props.isAuth &&
+                                    <div>
+                                        {u.followed ?
+                                            <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.followingBtn} onClick={() => {
+                                                props.unfollow(u.id);
+                                            }}>&nbsp;</button> :
+                                            <button disabled={props.followingInProgress.some(id => id === u.id)} className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
+                                                props.follow(u.id);
+                                            }}>&nbsp;</button>
+                                        }
+                                    </div>
+                                }
                             </div>
                             <div className={classes.userInfo}>
                                 <div className={classes.userStatus}>

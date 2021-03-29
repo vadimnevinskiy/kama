@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.isAuth) return <Redirect to={"/login"} />
+
         return (
             <>
                 {
@@ -41,13 +41,13 @@ class UsersContainer extends React.Component {
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
                     followingInProgress={this.props.followingInProgress}
+                    isAuth={this.props.isAuth}
                 />
             </>
         )
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(UsersContainer);
 
 let mapStateToProps = (state) => {
     return {
@@ -56,50 +56,13 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth
     }
 }
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (id) => {
-//             dispatch(followAC(id));
-//         },
-//         unfollow: (id) => {
-//             dispatch(unfollowAC(id));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber))
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setTotalUsersCountAC(totalCount))
-//         },
-//         toogleIsFetching: (isFetching) => {
-//             dispatch(toogleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 
-compose(
-    connect(mapStateToProps, {
-        follow,
-        unfollow,
-        toggleFollowingProgress,
-        getUsers: getUsers,
-        pageChanged: pageChanged
-    }),
-    withAuthRedirect
-)(UsersContainer)
 
-// export default connect(mapStateToProps, {
-//     follow,
-//     unfollow,
-//     toggleFollowingProgress,
-//     getUsers: getUsers,
-//     pageChanged: pageChanged
-// })(AuthRedirectComponent);
+
 export default compose(
     connect(mapStateToProps, {
         follow,
@@ -108,5 +71,5 @@ export default compose(
         getUsers: getUsers,
         pageChanged: pageChanged
     }),
-    withAuthRedirect
+    // withAuthRedirect
 )(UsersContainer);
