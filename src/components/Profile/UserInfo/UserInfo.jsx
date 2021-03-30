@@ -9,9 +9,7 @@ import website from "../../../assets/images/website.png";
 import twitter from "../../../assets/images/twitter.png";
 import link from "../../../assets/images/link.png";
 import avatar from "../../../assets/images/avatar.png";
-import {NavLink} from "react-router-dom";
-import UserStatus from "./UserStatus";
-import {updateStatus} from "../../../redux/profile-reducer";
+import UserStatusWithHooks from "./UserStatusWithHooks";
 
 const UserInfo = (props) => {
     if (!props.profile) {
@@ -53,7 +51,7 @@ const UserInfo = (props) => {
                         <br/>
                         <span className={`${classes.userIcon} material-icons`}>mode_comment</span>
                         {props.profile.lookingForAJobDescription}<br/>
-                        <UserStatus
+                        <UserStatusWithHooks
                             status={props.status}
                             updateStatus={props.updateStatus}
                         />
