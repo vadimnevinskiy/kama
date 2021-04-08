@@ -7,23 +7,27 @@ import {composeValidators, maxValue, required} from "../../../utils/validators/v
 
 
 
-const MyPosts = (props) => {
-    let postList = props.posts.map(item => {
-        return (
-            <Posts message={item.text} likes={item.likes} key={item.id}/>
-        )
-    });
+const MyPosts = React.memo( (props) => {
+        console.log("render Yo!")
+        let postList = props.posts.map(item => {
+            return (
+                <Posts message={item.text} likes={item.likes} key={item.id}/>
+            )
+        });
 
-    const onSubmit = (values) => {
-        props.addPost(values.postText);
-    }
-    return (
-        <div className={classes.posts}>
-            {postList}
-            <AddPostForm onSubmit={onSubmit}/>
-        </div>
-    );
-}
+        const onSubmit = (values) => {
+            props.addPost(values.postText);
+        }
+        return (
+            <div className={classes.posts}>
+                {postList}
+                <AddPostForm onSubmit={onSubmit}/>
+            </div>
+        );
+
+
+
+})
 
 
 
