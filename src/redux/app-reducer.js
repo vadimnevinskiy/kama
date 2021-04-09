@@ -1,5 +1,3 @@
-import {authAPI, securityAPI} from "../api/api";
-import {FORM_ERROR} from 'final-form';
 import {authMe} from "./auth-reducer";
 
 const SET_INITIALIZED = 'app/SET_INITIALIZED';
