@@ -33,7 +33,7 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        console.log("render USERS");
+        // console.log("render USERS");
         return (
             <>
                 {
@@ -58,21 +58,10 @@ class UsersContainer extends React.Component {
 }
 
 
-// let mapStateToProps = (state) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress,
-//         isAuth: state.auth.isAuth
-//     }
-// }
 
 
 let mapStateToProps = (state) => {
-    console.log("mapStateToProps USERS");
+    // console.log("mapStateToProps USERS");
     return {
         users: getUser(state),
         pageSize: getPageSize(state),

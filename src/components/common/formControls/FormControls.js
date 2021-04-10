@@ -2,14 +2,14 @@ import React from "react";
 import classes from './FormControls.module.css';
 import {Field} from "react-final-form";
 
-const FormControl = ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error;
+const FormControl = ({input, meta: {touched, error}, children}) => {
+    const hasError = touched && error;
     return (
         <div className={classes.formControl + ' ' + (hasError ? classes.error : '')}>
             <div>
-                {props.children}
+                {children}
             </div>
-            {hasError && <span>{meta.error}</span>}
+            {hasError && <span>{error}</span>}
         </div>
     )
 }

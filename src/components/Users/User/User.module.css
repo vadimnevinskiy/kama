@@ -1,0 +1,130 @@
+.user{
+    border: 1px solid #DCE0E8;
+    border-radius: 5px;
+    display: grid;
+    grid-template-areas: "img info";
+    grid-template-columns: 120px 13fr;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background: #F9F9F9;
+}
+
+.userImg{
+    grid-area: img;
+}
+.photo{
+    margin: 0px auto;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.photo img{
+    border: 1px solid #cccccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.button{
+    background: #cccccc;
+    border: 1px solid #2B2B2B;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 0px;
+    width: 100px;
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.2s;
+    opacity: 0.7;
+}
+.button:hover{
+    background: #2B2B2B;
+    color: #ffffff;
+    opacity: 1;
+}
+.button:disabled, .button:disabled:hover {
+    background: #cccccc;
+    color: #2B2B2B;
+    cursor: auto;
+    opacity: 1;
+    box-shadow: none;
+}
+.button:disabled:before, .button:disabled:hover:before {
+    content: "Progress...";
+}
+.followingBtn{
+    background: darkseagreen;
+    opacity: 0.7;
+}
+.followingBtn:hover{
+    background: darkred;
+    box-shadow: 0px 0px 10px 1px red;
+}
+.followingBtn:before{
+    content: "Following";
+}
+.followingBtn:hover:before{
+    content: "Unfoloow";
+}
+.unfollowingBtn{
+    background: palevioletred;
+    opacity: 0.3;
+}
+.unfollowingBtn:hover{
+    background: darkgreen;
+    box-shadow: 0px 0px 10px 1px green;
+}
+.unfollowingBtn:before{
+    content: "Unfollowing";
+}
+.unfollowingBtn:hover:before{
+    content: "Follow";
+}
+.userInfo{
+    grid-area: info;
+    display: grid;
+    grid-template-areas: "status location";
+    grid-template-columns: 10fr 5fr;
+}
+.userStatus{
+    grid-area: status;
+}
+.userStatus a{
+    text-decoration: none;
+    color: #2B2B2B;
+}
+
+.status{
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+.userInfo:hover .status{
+    opacity: 1;
+}
+.userLocation{
+    grid-area: location;
+    text-align: right;
+}
+.getUsersBtn{
+    text-align: center;
+    margin: 20px;
+}
+.getUsersBtn button{
+    background: #cccccc;
+    border: 1px solid #2B2B2B;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 0px;
+    width: 120px;
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+.getUsersBtn button:hover{
+    background: #2B2B2B;
+    color: #ffffff;
+}
