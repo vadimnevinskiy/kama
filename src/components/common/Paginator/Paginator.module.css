@@ -1,5 +1,10 @@
 .paginator {
     margin-bottom: 20px;
+    text-align: center;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 .paginator span{
     font-size: 19px;
@@ -22,3 +27,13 @@
     color: #ffffff;
     cursor: auto;
 }
+.paginator .iconBtn{
+    padding: 15px 0px;
+    width: 60px;
+    vertical-align: -3px;
+    background: #c2c2c2;
+}
+.paginator .iconBtn:hover{
+    background: #9ca197;
+}
+
