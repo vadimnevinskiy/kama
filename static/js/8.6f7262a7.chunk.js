@@ -1,0 +1,2 @@
+(this.webpackJsonpkama=this.webpackJsonpkama||[]).push([[8],{108:function(s,e,n){s.exports={newsList:"News_newsList__1Qvc1"}},112:function(s,e,n){"use strict";n.r(e);n(0);var t=n(108),a=n.n(t),i=n(1);e.default=function(s){return Object(i.jsx)("div",{className:a.a.newsList,children:"News"})}}}]);
+//# sourceMappingURL=8.6f7262a7.chunk.js.map
