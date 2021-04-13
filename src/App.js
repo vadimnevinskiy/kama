@@ -15,6 +15,7 @@ import store from "./redux/redux-store";
 import PreloaderBar from "./components/common/PreloaderBar/PreloaderBar";
 
 
+
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 // import ProfileContainerWithHooks from "./components/Profile/ProfileContainerWithHooks";
 // import UsersContainer from './components/Users/UsersContainer';
@@ -22,9 +23,11 @@ import PreloaderBar from "./components/common/PreloaderBar/PreloaderBar";
 // import Music from './components/Music/Music';
 // import Settings from './components/Settings/Settings';
 // import LoginContainer from "./components/Login/LoginContainer";
+// import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const ProfileContainerWithHooks = React.lazy(() => import('./components/Profile/ProfileContainerWithHooks'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+// const ProfileContainerWithHooks = React.lazy(() => import('./components/Profile/ProfileContainerWithHooks'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const News = React.lazy(() => import('./components/News/News'));
 const Music = React.lazy(() => import('./components/Music/Music'));
@@ -51,7 +54,7 @@ class App extends React.Component {
                     <div className="app-wrapper-content">
                         <Suspense fallback={<PreloaderBar />}>
                             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                            <Route path='/profile/:userId?' render={() => <ProfileContainerWithHooks/>}/>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/news' component={News}/>
                             <Route path='/music' component={Music}/>

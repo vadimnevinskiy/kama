@@ -31,6 +31,9 @@
 .avatar:hover .avatar__large{
     display: inline-block;
 }
+.loadPhoto{
+    padding: 10px 0px 0px 0px;
+}
 .user__data{
     grid-area: ud;
     display: flex;

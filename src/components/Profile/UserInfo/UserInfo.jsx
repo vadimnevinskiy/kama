@@ -24,6 +24,14 @@ const UserInfo = (props) => {
                 return 'http://' + domain;
             }
         }
+
+        const onMainPhotoSelected = (e) => {
+            if(e.target.files.length){
+                let file = e.target.files[0];
+                props.savePhoto(file);
+            }
+        }
+
         return (
             <div className={classes.user}>
                 <div className={classes.avatar}>
@@ -32,6 +40,12 @@ const UserInfo = (props) => {
                         props.profile.photos.large != null
                         ? <img className={classes.avatar__large} src={props.profile.photos.large != null ? props.profile.photos.large : avatar} alt="" />
                         : ''
+                    }
+                    {
+                        props.isOwner &&
+                        <div className={classes.loadPhoto}>
+                            <input type={"file"} onChange={onMainPhotoSelected} />
+                        </div>
                     }
 
                 </div>
