@@ -22,6 +22,13 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
                 portionNumber > 1 &&
                 <span
                     className={classes.iconBtn + ' ' + "material-icons"}
+                    onClick={() => {setPortionNumber(1)}}
+                >first_page</span>
+            }
+            {
+                portionNumber > 1 &&
+                <span
+                    className={classes.iconBtn + ' ' + "material-icons"}
                     onClick={() => {setPortionNumber(portionNumber - 1)}}
                 >chevron_left</span>
             }
@@ -50,6 +57,14 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
                     onClick={() => {setPortionNumber(portionNumber + 1)}}
                 >chevron_right</span>
             }
+            {
+                portionCount > portionNumber &&
+                <span
+                    className={classes.iconBtn + ' ' + "material-icons"}
+                    onClick={() => {setPortionNumber(portionCount)}}
+                >last_page</span>
+            }
+
         </div>
     )
 }
