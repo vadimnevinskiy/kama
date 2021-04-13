@@ -14,7 +14,7 @@ const UserInfo = (props) => {
 
 
         const onMainPhotoSelected = (e) => {
-            if(e.target.files.length){
+            if (e.target.files.length) {
                 let file = e.target.files[0];
                 props.savePhoto(file);
             }
@@ -23,42 +23,53 @@ const UserInfo = (props) => {
         return (
             <div className={classes.user}>
                 <div className={classes.avatar}>
-                    <img className={classes.avatar__image} src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt="" />
+                    <img className={classes.avatar__image}
+                         src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt=""/>
                     {
                         props.profile.photos.large != null
-                        ? <img className={classes.avatar__large} src={props.profile.photos.large != null ? props.profile.photos.large : avatar} alt="" />
-                        : ''
+                            ? <img className={classes.avatar__large}
+                                   src={props.profile.photos.large != null ? props.profile.photos.large : avatar}
+                                   alt=""/>
+                            : ''
                     }
                     {
                         props.isOwner &&
                         <div className={classes.loadPhoto}>
-                            <input type={"file"} onChange={onMainPhotoSelected} />
+                            <input type={"file"} onChange={onMainPhotoSelected}/>
                         </div>
                     }
-
                 </div>
                 <div className={classes.user__data}>
                     <h3 className={classes.user__name}>{props.profile.fullName}</h3>
-                    <h5 className={classes.description}>{props.profile.aboutMe}</h5>
-                    <div className={classes.user__status}>
+
+                    {
+                        props.profile.aboutMe &&
+                        <div className={classes.description}><strong>About me:</strong> <span
+                            className={classes.info}>{props.profile.aboutMe}</span></div>
+                    }
+
+                    <div className={classes.user__job}>
+                        <strong>Looking for a job: </strong>
                         {
-                            props.profile.lookingForAJob ?
-                                <span
-                                    className={`${classes.userIcon} ${classes.greenIcon} material-icons`}>report</span> :
-                                <span
-                                    className={`${classes.userIcon} ${classes.redIcon} material-icons`}>report_off</span>
+                            props.profile.lookingForAJob
+                                ? <span className={classes.info + ' ' + classes.greenTxt}>Yes</span>
+                                : <span className={classes.info + ' ' + classes.redTxt}>No</span>
                         }
-
-
-                        <br/>
-                        <span className={`${classes.userIcon} material-icons`}>mode_comment</span>
-                        {props.profile.lookingForAJobDescription}<br/>
-                        <UserStatusWithHooks
-                            status={props.status}
-                            updateStatus={props.updateStatus}
-                        />
-                        {/*<span className={classes.onlineStatus}>Заходил 6 минут назад</span>*/}
                     </div>
+                    {
+                        props.profile.lookingForAJob &&
+                        <div className={classes.user__job_description}>
+                            <strong>Skills: </strong>
+                            <span className={classes.info}>{props.profile.lookingForAJobDescription}</span><br/>
+                        </div>
+                    }
+                    {
+                        props.isOwner
+                            ? <UserStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                            : <div className={classes.status}><strong>Status: </strong><span className={classes.info}>{props.status}</span></div>
+
+                    }
+
                 </div>
                 <UserContacts
                     facebook={props.profile.contacts.facebook}

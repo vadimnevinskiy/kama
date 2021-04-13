@@ -1,0 +1,18 @@
+.user__contacts{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+.user__contacts a{
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+}
+.user__contacts img{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 0px;
+}

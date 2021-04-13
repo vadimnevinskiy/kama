@@ -1,4 +1,4 @@
-import classes from "../UserInfo/UserInfo.module.css";
+import classes from "../../Profile/UserContacts/UserContacts.module.css";
 import fb from "../../../assets/images/fb.png";
 import website from "../../../assets/images/website.png";
 import vk from "../../../assets/images/vk.png";
