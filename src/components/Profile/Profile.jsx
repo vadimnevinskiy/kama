@@ -3,7 +3,7 @@ import classes from './Profile.module.css';
 import UserInfo from './UserInfo/UserInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
-const Profile = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+const Profile = ({profile, status, updateStatus, isOwner, savePhoto, saveData}) => {
     return (
         <div className={classes.profile}>
             <UserInfo
@@ -12,6 +12,7 @@ const Profile = ({profile, status, updateStatus, isOwner, savePhoto}) => {
                 updateStatus={updateStatus}
                 isOwner={isOwner}
                 savePhoto={savePhoto}
+                saveData={saveData}
             />
             <MyPostsContainer />
         </div>

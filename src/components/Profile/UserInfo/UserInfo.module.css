@@ -1,6 +1,6 @@
 .user{
     display: grid;
-    grid-template-areas: "ua ud";
+    grid-template-areas: "ua ud uc";
     grid-template-columns: 130px 1fr;
     margin: 0px 0px 30px 0px;
 }
@@ -28,61 +28,42 @@
 .avatar{
     position: relative;
 }
-.avatar:hover .avatar__large{
+.avatarBlock{
+
+}
+.avatarBlock:hover .avatar__large{
     display: inline-block;
 }
 .loadPhoto{
     padding: 10px 0px 0px 0px;
 }
-.user__data{
+
+.userData{
     grid-area: ud;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 300px;
 }
-.user__data strong{
+
+.userData strong{
     display: inline-block;
     width: 150px;
     border-bottom: 1px dashed #cccccc;
 }
-.user__name{
+.userContacts{
+    border: 1px solid #cccccc;
+    padding: 20px;
+    margin: 0px 0px 0px 0px;
+}
+.userContacts h3{
     margin: 0px 0px 10px 0px;
 }
-.description{
-    margin: 0px 0px 10px 0px;
+.contactItem{
+    margin-bottom: 10px;
 }
-.user__job{
-    margin: 0px 0px 10px 0px;
-}
-.user__job_description{
-    margin: 0px 0px 10px 0px;
-}
-.onlineStatus{
-    color: #cccccc;
-}
-.userIcon{
-    vertical-align: -7px;
-    color: #3c59ba;
-}
-.greenIcon{
-    color: green;
-}
-.redIcon{
-    color: red;
-}
-
-.info{
-    background: #cccccc;
-    border-radius: 5px;
-    padding: 3px 5px;
+.contactItem strong{
     display: inline-block;
+    width: 100px;
 }
-.greenTxt{
-    background: green;
-    color: white;
-}
-.redTxt{
-    background: red;
-    color: white;
+.data{
+
 }

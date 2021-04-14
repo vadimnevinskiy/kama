@@ -1,0 +1,44 @@
+.userForm{
+    display: grid;
+    grid-template-areas: "ud uc";
+    grid-template-columns: 1fr 300px;
+    grid-gap: 10px;
+}
+.userData{
+    grid-area: ud;
+}
+.userContacts{
+    grid-area: uc;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    margin: 0px 0px 0px 0px;
+    grid-area: uc;
+}
+.edit{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+    background: #cccccc;
+    padding: 5px 5px 3px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.editIcon{
+
+}
+
+.userContacts h3{
+    margin: 0px 0px 10px 0px;
+}
+.contactItem{
+    margin-bottom: 10px;
+}
+.contactItem strong{
+    display: inline-block;
+    width: 100px;
+}
+.red{
+    background: red;
+}

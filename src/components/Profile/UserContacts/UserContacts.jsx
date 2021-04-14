@@ -6,6 +6,7 @@ import twitter from "../../../assets/images/twitter.png";
 import youtube from "../../../assets/images/youtube.png";
 import github from "../../../assets/images/github.png";
 import link from "../../../assets/images/link.png";
+import instagram from "../../../assets/images/instagram.png";
 import React from "react";
 
 const UserContacts = (props) => {
@@ -57,6 +58,13 @@ const UserContacts = (props) => {
                 props.github ?
                     <a href={checkDomainPrefix(props.github)} title={props.github} target="_blank">
                         <img src={github} alt={props.github} />
+                    </a> :
+                    ''
+            }
+            {
+                props.instagram ?
+                    <a href={checkDomainPrefix(props.instagram)} title={props.instagram} target="_blank">
+                        <img src={instagram} alt={props.instagram} />
                     </a> :
                     ''
             }

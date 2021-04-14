@@ -1,17 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './UserInfo.module.css';
 import Preloader from "../../common/preloader/Preloader";
 import avatar from "../../../assets/images/avatar.png";
-import UserStatusWithHooks from "./UserStatusWithHooks";
+import UserData from "../UserData/UserData";
+import UserForm from "../UserForm/UserForm";
 import UserContacts from "../UserContacts/UserContacts";
 
 const UserInfo = (props) => {
+    let [editMode, setEditMode] = useState(false);
+
+
     if (!props.profile) {
         return (
             <Preloader/>
         );
     } else {
 
+        const activateEditMode = () => {
+            setEditMode(true);
+        }
+        const deActivateEditMode = () => {
+            setEditMode(false);
+        }
 
         const onMainPhotoSelected = (e) => {
             if (e.target.files.length) {
@@ -19,58 +29,61 @@ const UserInfo = (props) => {
                 props.savePhoto(file);
             }
         }
+        const onSubmit = values => {
+            props.saveData(values);
+            deActivateEditMode();
+        }
 
         return (
             <div className={classes.user}>
                 <div className={classes.avatar}>
-                    <img className={classes.avatar__image}
-                         src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt=""/>
-                    {
-                        props.profile.photos.large != null
-                            ? <img className={classes.avatar__large}
-                                   src={props.profile.photos.large != null ? props.profile.photos.large : avatar}
-                                   alt=""/>
-                            : ''
-                    }
-                    {
-                        props.isOwner &&
-                        <div className={classes.loadPhoto}>
-                            <input type={"file"} onChange={onMainPhotoSelected}/>
-                        </div>
-                    }
-                </div>
-                <div className={classes.user__data}>
-                    <h3 className={classes.user__name}>{props.profile.fullName}</h3>
-
-                    {
-                        props.profile.aboutMe &&
-                        <div className={classes.description}><strong>About me:</strong> <span
-                            className={classes.info}>{props.profile.aboutMe}</span></div>
-                    }
-
-                    <div className={classes.user__job}>
-                        <strong>Looking for a job: </strong>
+                    <div className={classes.avatarBlock}>
+                        <img className={classes.avatar__image}
+                             src={props.profile.photos.small != null ? props.profile.photos.small : avatar} alt=""/>
                         {
-                            props.profile.lookingForAJob
-                                ? <span className={classes.info + ' ' + classes.greenTxt}>Yes</span>
-                                : <span className={classes.info + ' ' + classes.redTxt}>No</span>
+                            props.profile.photos.large != null
+                                ? <img className={classes.avatar__large}
+                                       src={props.profile.photos.large != null ? props.profile.photos.large : avatar}
+                                       alt=""/>
+                                : ''
+                        }
+                        {
+                            props.isOwner &&
+                            <div className={classes.loadPhoto}>
+                                <input type={"file"} onChange={onMainPhotoSelected}/>
+                            </div>
                         }
                     </div>
-                    {
-                        props.profile.lookingForAJob &&
-                        <div className={classes.user__job_description}>
-                            <strong>Skills: </strong>
-                            <span className={classes.info}>{props.profile.lookingForAJobDescription}</span><br/>
-                        </div>
-                    }
-                    {
-                        props.isOwner
-                            ? <UserStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                            : <div className={classes.status}><strong>Status: </strong><span className={classes.info}>{props.status}</span></div>
-
-                    }
-
                 </div>
+                <div className={classes.userData}>
+                    <div className={classes.data}>
+                        {
+                            editMode
+                                ? <UserForm onSubmit={onSubmit} profile={props.profile} isOwner={props.isOwner} status={props.status} deActivateEditMode={deActivateEditMode}/>
+                                : <UserData profile={props.profile} isOwner={props.isOwner} status={props.status}
+                                            activateEditMode={activateEditMode}/>
+                        }
+                    </div>
+                    {/*{*/}
+                    {/*    !editMode*/}
+                    {/*        ? <div className={classes.userContacts}>*/}
+                    {/*            <h3>Contacts</h3>*/}
+                    {/*            {*/}
+                    {/*                Object.keys(props.profile.contacts).map((key) => {*/}
+                    {/*                    if (props.profile.contacts[key]) {*/}
+                    {/*                        return (*/}
+                    {/*                            <Contact key={key} contactTitle={key}*/}
+                    {/*                                     contactValue={props.profile.contacts[key]}/>*/}
+                    {/*                        )*/}
+                    {/*                    }*/}
+                    {/*                })*/}
+                    {/*            }*/}
+                    {/*        </div>*/}
+                    {/*        : ''*/}
+                    {/*}*/}
+                </div>
+
+
                 <UserContacts
                     facebook={props.profile.contacts.facebook}
                     website={props.profile.contacts.website}
@@ -79,10 +92,21 @@ const UserInfo = (props) => {
                     youtube={props.profile.contacts.youtube}
                     github={props.profile.contacts.github}
                     mainLink={props.profile.contacts.mainLink}
+                    instagram={props.profile.contacts.instagram}
                 />
+
             </div>
         );
     }
 }
+
+const Contact = ({contactTitle, contactValue}) => {
+    return (
+        <div className={classes.contactItem}>
+            <strong>{contactTitle}:</strong> {contactValue}
+        </div>
+    )
+}
+
 
 export default UserInfo;

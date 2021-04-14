@@ -87,5 +87,24 @@ export const profileAPI = {
                 return response.data
             }
         )
+    },
+    saveProfile(profile) {
+        return instance.put(`profile`, {
+            aboutMe: profile.aboutMe,
+            contacts: {
+                facebook: profile.facebook,
+                website: profile.website,
+                vk: profile.vk,
+                twitter: profile.twitter,
+                instagram: profile.instagram,
+                youtube: profile.youtube,
+                github: profile.github,
+                mainLink: profile.mainLink,
+            },
+            lookingForAJob: profile.lookingForAJob,
+            lookingForAJobDescription: profile.lookingForAJobDescription,
+            fullName: profile.fullName,
+
+        })
     }
 }

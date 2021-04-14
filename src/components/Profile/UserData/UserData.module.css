@@ -1,0 +1,56 @@
+
+.userName{
+    margin: 0px 0px 10px 0px;
+}
+.description{
+    margin: 0px 0px 10px 0px;
+}
+.userJob{
+    margin: 0px 0px 10px 0px;
+}
+.userJobDescription{
+    margin: 0px 0px 10px 0px;
+}
+.onlineStatus{
+    color: #cccccc;
+}
+.userIcon{
+    vertical-align: -7px;
+    color: #3c59ba;
+}
+.greenIcon{
+    color: green;
+}
+.redIcon{
+    color: red;
+}
+
+.info{
+    background: #cccccc;
+    border-radius: 5px;
+    padding: 3px 5px;
+    display: inline-block;
+}
+.greenTxt{
+    background: green;
+    color: white;
+}
+.redTxt{
+    background: red;
+    color: white;
+}
+
+
+
+
+
+.edit{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+    background: #cccccc;
+    padding: 5px 5px 3px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
