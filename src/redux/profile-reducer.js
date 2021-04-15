@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {FORM_ERROR} from "final-form";
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE_POST';
@@ -131,6 +132,10 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     const response = await profileAPI.saveProfile(profile);
     if (response.data.resultCode === 0) {
         dispatch(getProfile(userId));
+    } else {
+        return {[FORM_ERROR]: response.data.messages[0]};
+        // return Promise.reject({[FORM_ERROR]: response.data.messages[0]});
+        // return Promise.reject(response.data.messages[0]);
     }
 }
 

@@ -1,41 +1,32 @@
-
+.userData{
+    margin: 0px 0px 50px 0px;
+    padding: 0px 0px 30px 0px;
+    border-bottom: 1px solid #cccccc;
+}
 .userName{
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 50px 0px;
+    text-align: center;
+    font-size: 40px;
 }
-.description{
-    margin: 0px 0px 10px 0px;
+.userDescription{
+    margin: 0px 0px 20px 0px;
 }
-.userJob{
-    margin: 0px 0px 10px 0px;
-}
-.userJobDescription{
-    margin: 0px 0px 10px 0px;
-}
-.onlineStatus{
-    color: #cccccc;
-}
-.userIcon{
-    vertical-align: -7px;
-    color: #3c59ba;
-}
-.greenIcon{
-    color: green;
-}
-.redIcon{
-    color: red;
-}
+
+
+
+
 
 .info{
     background: #cccccc;
     border-radius: 5px;
-    padding: 3px 5px;
+    padding: 5px 7px;
     display: inline-block;
 }
-.greenTxt{
+.greenInfo{
     background: green;
     color: white;
 }
-.redTxt{
+.redInfo{
     background: red;
     color: white;
 }
@@ -53,4 +44,7 @@
     padding: 5px 5px 3px 5px;
     border-radius: 50%;
     cursor: pointer;
+}
+.editIcon{
+
 }

@@ -18,7 +18,7 @@ const UserContacts = (props) => {
         }
     }
     return (
-        <div className={classes.user__contacts}>
+        <div className={classes.userContacts}>
             {
                 props.facebook ?
                     <a href={checkDomainPrefix(props.facebook)} title={props.facebook} target="_blank">

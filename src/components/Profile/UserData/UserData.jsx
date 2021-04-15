@@ -6,42 +6,42 @@ import UserStatusWithHooks from "../UserInfo/UserStatusWithHooks";
 const UserData = (props) => {
     return (
 
-        <>
+        <div className={classes.userData}>
             {
                 props.isOwner &&
                 <div className={classes.edit} onClick={props.activateEditMode}><span
                     className={classes.editIcon + ' ' + "material-icons"}>mode_edit</span></div>
             }
-            <h3 className={classes.userName}>{props.profile.fullName}</h3>
+            <h1 className={classes.userName}>{props.profile.fullName}</h1>
 
             {
                 props.profile.aboutMe &&
-                <div className={classes.description}><strong>About me:</strong> <span
+                <div className={classes.userDescription}><strong>About me:</strong> <span
                     className={classes.info}>{props.profile.aboutMe}</span></div>
             }
 
-            <div className={classes.userJob}>
+            <div className={classes.userDescription}>
                 <strong>Looking for a job: </strong>
                 {
                     props.profile.lookingForAJob
-                        ? <span className={classes.info + ' ' + classes.greenTxt}>Yes</span>
-                        : <span className={classes.info + ' ' + classes.redTxt}>No</span>
+                        ? <span className={classes.info + ' ' + classes.greenInfo}>Yes</span>
+                        : <span className={classes.info + ' ' + classes.redInfo}>No</span>
                 }
             </div>
             {
                 props.profile.lookingForAJob &&
-                <div className={classes.userJobDescription}>
+                <div className={classes.userDescription}>
                     <strong>Skills: </strong>
-                    <span className={classes.info}>{props.profile.lookingForAJobDescription}</span><br/>
+                    <span className={classes.info}>{props.profile.lookingForAJobDescription}</span>
                 </div>
             }
             {
                 props.isOwner
                     ? <UserStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                    : <div className={classes.status}><strong>Status: </strong><span
+                    : <div className={classes.userDescription}><strong>Status: </strong><span
                         className={classes.info}>{props.status}</span></div>
             }
-        </>
+        </div>
 
     )
 }

@@ -1,0 +1,30 @@
+.avatar{
+    position: relative;
+    margin-bottom: 20px;
+}
+.avatarBlock{
+    width: 100px;
+    margin: 0px auto;
+}
+.avatarImage{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+.avatarLarge{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0%;
+    left: 0px;
+    border: 2px solid #162145;
+    box-shadow: 0px 0px 30px 5px #162145;
+    border-radius: 50%;
+    display: none;
+    transition: all 0.5s;
+}
+
+.avatarBlock:hover .avatarLarge{
+    display: inline-block;
+}

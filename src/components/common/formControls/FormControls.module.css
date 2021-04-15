@@ -11,16 +11,16 @@
 .fieldTextarea{
     width: 98%;
     height: 47px;
-    padding: 5px;
+    padding: 5px 1%;
     border: 1px solid #ccc;
     outline:none;
     font-size: 18px;
     resize: none;
 }
 .fieldInput{
-    width: 98%;
+    width: 97%;
     height: 20px;
-    padding: 5px;
+    padding: 5px 1%;
     border: 1px solid #ccc;
     outline:none;
     font-size: 18px;

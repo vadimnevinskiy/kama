@@ -1,18 +1,25 @@
 .userForm{
     display: grid;
     grid-template-areas: "ud uc";
-    grid-template-columns: 1fr 300px;
-    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    margin-bottom: 50px;
 }
 .userData{
     grid-area: ud;
 }
 .userContacts{
     grid-area: uc;
+}
+
+.userData, .userContacts{
     border: 1px solid #cccccc;
-    padding: 20px;
+    padding: 10px;
     margin: 0px 0px 0px 0px;
-    grid-area: uc;
+    background: #dce0e0;
+}
+.userData h3, .userContacts h3{
+    margin: 0px 0px 20px 0px;
 }
 .edit{
     position: absolute;
@@ -28,17 +35,18 @@
 .editIcon{
 
 }
+.form{
 
-.userContacts h3{
-    margin: 0px 0px 10px 0px;
 }
-.contactItem{
-    margin-bottom: 10px;
+
+.userData > div, .userContacts > div{
+    margin-bottom: 30px;
 }
 .contactItem strong{
     display: inline-block;
     width: 100px;
 }
-.red{
-    background: red;
+
+.serverError{
+    color: red;
 }

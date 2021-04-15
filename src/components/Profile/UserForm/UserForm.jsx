@@ -6,7 +6,6 @@ import {createField, Input} from "../../common/formControls/FormControls";
 
 const UserForm = (props) => {
 
-
     let initValue = {
         fullName: props.profile.fullName,
         aboutMe: props.profile.aboutMe,
@@ -23,24 +22,25 @@ const UserForm = (props) => {
             mainLink: props.profile.contacts.mainLink
 
     }
+
     return (
         <Form
             onSubmit={props.onSubmit}
             initialValues={initValue}
-            render={({handleSubmit, form, submitting, pristine, values}) => (
+            render={({handleSubmit, submitError}) => (
                 <form onSubmit={handleSubmit} className={classes.form}>
                     <div className={classes.userForm}>
+                        <div className={classes.edit} onClick={props.deActivateEditMode}>
+                            <span className={classes.editIcon + ' ' + "material-icons"}>close</span>
+                        </div>
+
                         <div className={classes.userData}>
-                            <div className={classes.edit} onClick={props.deActivateEditMode}>
-                                <span className={classes.editIcon + ' ' + "material-icons"}>close</span>
-                            </div>
-
-
-                            {createField(Input, "Name", "fullName", null, {type: "text"}, null)}
-                            {createField(Input, "About Me", "aboutMe", null, {type: "text"}, null)}
+                            <h3>Info</h3>
+                            {createField(Input, "Name", "fullName", null, {type: "text"}, "Name")}
+                            {createField(Input, "About Me", "aboutMe", null, {type: "text"}, "About me")}
+                            {createField(Input, "Skills", "lookingForAJobDescription", null, {type: "textarea"}, "Skills")}
                             {createField(Input, null, "lookingForAJob", null, {type: "checkbox"}, "Looking for a job")}
-                            {createField(Input, "Skills", "lookingForAJobDescription", null, {type: "textarea"}, null)}
-
+                            {submitError && <div className={classes.serverError}>{submitError}</div>}
                             <div className="buttons">
                                 <button type="submit">Submit</button>
                             </div>
@@ -57,6 +57,7 @@ const UserForm = (props) => {
                             {createField(Input, "mainLink", "mainLink", null, {type: "text"}, null)}
                         </div>
                     </div>
+
                 </form>
             )}
         />
