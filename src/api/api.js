@@ -1,6 +1,4 @@
 import * as axios from "axios";
-import {FORM_ERROR} from "final-form";
-import {authMe} from "../redux/auth-reducer";
 
 
 const instance = axios.create({
@@ -80,8 +78,11 @@ export const profileAPI = {
         const formData = new FormData();
         formData.append("image", photoFile);
         return instance.put(`profile/photo/`, formData, {
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // }
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
         }).then(response => {
                 return response.data

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import classes from "./Paginator.module.css";
+import classNames from "classnames";
 
 let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
@@ -21,14 +22,14 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
             {
                 portionNumber > 1 &&
                 <span
-                    className={classes.iconBtn + ' ' + "material-icons"}
+                    className={classNames(classes.iconBtn, "material-icons")}
                     onClick={() => {setPortionNumber(1)}}
                 >first_page</span>
             }
             {
                 portionNumber > 1 &&
                 <span
-                    className={classes.iconBtn + ' ' + "material-icons"}
+                    className={classNames(classes.iconBtn, "material-icons")}
                     onClick={() => {setPortionNumber(portionNumber - 1)}}
                 >chevron_left</span>
             }
@@ -38,7 +39,10 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
                     .map(p => {
                     if (currentPage === p) {
                         return (
-                            <span key={p} className={classes.selectedPage}>{p}</span>
+                            <span
+                                key={p}
+                                className={classes.selectedPage}
+                            >{p}</span>
                         )
                     } else {
                         return (
@@ -53,14 +57,14 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
             {
                 portionCount > portionNumber &&
                 <span
-                    className={classes.iconBtn + ' ' + "material-icons"}
+                    className={classNames(classes.iconBtn, "material-icons")}
                     onClick={() => {setPortionNumber(portionNumber + 1)}}
                 >chevron_right</span>
             }
             {
                 portionCount > portionNumber &&
                 <span
-                    className={classes.iconBtn + ' ' + "material-icons"}
+                    className={classNames(classes.iconBtn, "material-icons")}
                     onClick={() => {setPortionNumber(portionCount)}}
                 >last_page</span>
             }

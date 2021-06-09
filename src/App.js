@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Suspense} from 'react';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Footer from './components/Footer/Footer';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
@@ -13,6 +13,7 @@ import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 import store from "./redux/redux-store";
 import PreloaderBar from "./components/common/PreloaderBar/PreloaderBar";
+
 
 
 
@@ -38,8 +39,16 @@ const LoginContainer = React.lazy(() => import('./components/Login/LoginContaine
 
 
 class App extends React.Component {
+    catchAllErrors = (promiseRejectionEvent) => {
+        console.log("Error: " + promiseRejectionEvent);
+    }
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllErrors);
+    }
+
+    componentWillMount() {
+        window.removeEventListener("unhandledrejection", this.catchAllErrors);
     }
 
     render() {
@@ -53,13 +62,17 @@ class App extends React.Component {
                     {/*<Sidebar sidebar={props.state.sidebar}/>*/}
                     <div className="app-wrapper-content">
                         <Suspense fallback={<PreloaderBar />}>
-                            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                            <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
-                            <Route path='/users' render={() => <UsersContainer/>}/>
-                            <Route path='/news' component={News}/>
-                            <Route path='/music' component={Music}/>
-                            <Route path='/settings' component={Settings}/>
-                            <Route path='/login' render={() => <LoginContainer/>}/>
+                            <Switch>
+                                <Route exact path='/' render={() => <Redirect to={'/profile'} />}/>
+                                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                                <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
+                                <Route path='/users' render={() => <UsersContainer/>}/>
+                                <Route path='/news' component={News}/>
+                                <Route path='/music' component={Music}/>
+                                <Route path='/settings' component={Settings}/>
+                                <Route path='/login' render={() => <LoginContainer/>}/>
+                                <Route path='*' render={() => <div>404 NOT FOUND!</div>}/>
+                            </Switch>
                         </Suspense>
                     </div>
                     <Footer/>
@@ -84,7 +97,7 @@ let AppContainer = compose(
 
 const AppMain = (props) => {
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>

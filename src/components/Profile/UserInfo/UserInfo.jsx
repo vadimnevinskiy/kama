@@ -89,7 +89,7 @@ const UserInfo = (props) => {
                             editMode
                                 ? <UserForm onSubmit={onSubmit} profile={props.profile} isOwner={props.isOwner} status={props.status} deActivateEditMode={deActivateEditMode}/>
                                 : <UserData profile={props.profile} isOwner={props.isOwner} status={props.status}
-                                            activateEditMode={activateEditMode}/>
+                                            activateEditMode={activateEditMode} updateStatus={props.updateStatus} />
                         }
                     </div>
 
