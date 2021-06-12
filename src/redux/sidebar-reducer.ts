@@ -1,4 +1,21 @@
-let initialState = {
+
+
+export type FavoriteType = {
+    id: number
+    img: string
+    name: string
+}
+export type NavbarType = {
+    id: number
+    url: string
+    name: string
+    icon: string
+}
+type InitialStateSidebarType = {
+    navbar: NavbarType[]
+    favorite: FavoriteType[]
+}
+let initialState: InitialStateSidebarType = {
     navbar: [
         {id: 0, url: 'profile', name: 'Profile', icon: 'person'},
         {id: 1, url: 'dialogs', name: 'Dialogs', icon: 'mail'},
@@ -15,7 +32,8 @@ let initialState = {
     ]
 };
 
-const sidebarReducer = (state = initialState, action) => {
+const sidebarReducer = (state: InitialStateSidebarType = initialState, action: any): InitialStateSidebarType => {
     return state;
 }
+
 export default sidebarReducer;

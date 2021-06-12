@@ -7,12 +7,11 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SET_PHOTO = 'SET_PHOTO';
 
-type PostType = {
+export type PostType = {
     id: number
     text: string
     likes: number
 }
-
 type PhotoType = {
     small: string
     large: string
@@ -27,7 +26,7 @@ type ProfileContactsType = {
     youtube: string | null
     mainLink: string | null
 }
-type ProfileType = {
+export type ProfileType = {
     userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
@@ -41,6 +40,8 @@ type InitialStateProfileType = {
     profile: ProfileType | null
     status: string
 };
+
+
 
 let initialState: InitialStateProfileType = {
     posts: [
