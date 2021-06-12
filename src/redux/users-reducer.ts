@@ -30,6 +30,18 @@ let initialState: InitialStateUsersType = {
     followingInProgress: []
 }
 
+// // // // OR SIMILARLY EXAMPLE
+// let initialState = {
+//     users: [] as Array<UserType>,
+//     pageSize: 10,
+//     totalUsersCount: 0,
+//     currentPage: 1,
+//     isFetching: false,
+//     followingInProgress: [] as Array<number> // array of users ids
+// }
+// type InitialStateUsersType = typeof initialState
+
+
 const usersReducer = (state: InitialStateUsersType = initialState, action: SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType | FollowSuccessActionType | UnfollowSuccessActionType | ToggleIsFetchingActionType | ToggleFollowingProgressActionType): InitialStateUsersType => {
     switch (action.type) {
         case FOLLOW:
