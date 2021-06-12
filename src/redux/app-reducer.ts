@@ -1,6 +1,6 @@
-import {authMe} from "./auth-reducer";
+import {authMe} from "./auth-reducer"
 
-const SET_INITIALIZED = 'app/SET_INITIALIZED';
+const SET_INITIALIZED = 'app/SET_INITIALIZED'
 
 export type InitialStateType = {
     initialized: boolean
@@ -8,7 +8,7 @@ export type InitialStateType = {
 
 let initialState: InitialStateType = {
     initialized: false
-};
+}
 
 const appReducer = (state: InitialStateType = initialState, action: InitializedSuccessActionType): InitialStateType => {
     switch (action.type) {
@@ -20,7 +20,6 @@ const appReducer = (state: InitialStateType = initialState, action: InitializedS
         default:
             return state;
     }
-
 }
 
 export type InitializedSuccessActionType = {
@@ -40,10 +39,10 @@ export const initializedSuccess = (): InitializedSuccessActionType => {
 
 // THUNK CREATORS
 export const initializeApp = () => (dispatch: any) => {
-    let promise = dispatch(authMe());
+    let promise = dispatch(authMe())
     promise.then(() => {
-        dispatch(initializedSuccess());
-    });
+        dispatch(initializedSuccess())
+    })
 }
 
 
@@ -54,4 +53,4 @@ export const initializeApp = () => (dispatch: any) => {
 
 
 
-export default appReducer;
+export default appReducer

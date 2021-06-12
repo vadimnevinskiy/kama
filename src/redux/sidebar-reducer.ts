@@ -1,16 +1,6 @@
+import {FavoriteType, NavbarType} from "../types/types"
 
 
-export type FavoriteType = {
-    id: number
-    img: string
-    name: string
-}
-export type NavbarType = {
-    id: number
-    url: string
-    name: string
-    icon: string
-}
 type InitialStateSidebarType = {
     navbar: NavbarType[]
     favorite: FavoriteType[]
@@ -30,10 +20,10 @@ let initialState: InitialStateSidebarType = {
         {id: 1, img: 'https://f3.mylove.ru/J1NuDGy2QF.jpg', name: 'Vadim'},
         {id: 2, img: 'https://f3.mylove.ru/J1NuDGy2QF.jpg', name: 'Katya'},
     ]
-};
-
-const sidebarReducer = (state: InitialStateSidebarType = initialState, action: any): InitialStateSidebarType => {
-    return state;
 }
 
-export default sidebarReducer;
+const sidebarReducer = (state: InitialStateSidebarType = initialState, action: any): InitialStateSidebarType => {
+    return state
+}
+
+export default sidebarReducer

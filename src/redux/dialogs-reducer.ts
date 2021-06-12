@@ -1,19 +1,14 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+import {DialogType, MessageType} from "../types/types"
 
-export type DialogType = {
-    id: number
-    name: string
-}
-export type MessageType = {
-    id: number
-    text: string
-}
+const ADD_MESSAGE = 'ADD-MESSAGE'
+
+
 
 
 export type InitialStateDialogsType = {
     users: DialogType[]
     messages: MessageType[]
-};
+}
 
 let initialState: InitialStateDialogsType = {
     users: [
@@ -30,7 +25,7 @@ let initialState: InitialStateDialogsType = {
         {id: 1, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing.'},
         {id: 2, text: 'Lorem ipsum dolor.'}
     ]
-};
+}
 
 const dialogsReducer = (state: InitialStateDialogsType = initialState, action: MessageActionType): InitialStateDialogsType => {
     switch (action.type) {
@@ -62,4 +57,4 @@ export const addMessageActionCreator = (value: string): MessageActionType => {
     }
 }
 
-export default dialogsReducer;
+export default dialogsReducer

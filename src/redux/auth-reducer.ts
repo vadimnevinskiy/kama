@@ -1,9 +1,8 @@
-import {authAPI, securityAPI} from '../api/api';
-import {FORM_ERROR} from 'final-form';
+import {authAPI, securityAPI} from '../api/api'
+import {FORM_ERROR} from 'final-form'
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const SET_CAPTCHA = 'SET_CAPTCHA';
+const SET_USER_DATA = 'SET_USER_DATA'
+const SET_CAPTCHA = 'SET_CAPTCHA'
 
 export type InitialStateAuthType = {
     userId: number | null
@@ -12,7 +11,7 @@ export type InitialStateAuthType = {
     isAuth: boolean
     isFetching: boolean
     captcha: string | null
-};
+}
 
 let initialState: InitialStateAuthType = {
     userId: null,
@@ -21,7 +20,7 @@ let initialState: InitialStateAuthType = {
     isAuth: false,
     isFetching: false,
     captcha: null
-};
+}
 
 const authReducer = (state: InitialStateAuthType = initialState, action: AuthUserDataActionType | CaptchaActionType): InitialStateAuthType => {
     switch (action.type) {
@@ -38,7 +37,6 @@ const authReducer = (state: InitialStateAuthType = initialState, action: AuthUse
         default:
             return state;
     }
-
 }
 
 type PayloadAuthUserDataType = {
