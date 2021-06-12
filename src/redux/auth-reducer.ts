@@ -22,7 +22,11 @@ let initialState: InitialStateAuthType = {
     captcha: null
 }
 
-const authReducer = (state: InitialStateAuthType = initialState, action: AuthUserDataActionType | CaptchaActionType): InitialStateAuthType => {
+const authReducer = (
+    state: InitialStateAuthType = initialState,
+    action: AuthUserDataActionType |
+        CaptchaActionType
+): InitialStateAuthType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -74,8 +78,6 @@ export const setCaptcha = (captchaUrl: string): CaptchaActionType => {
 }
 
 
-
-
 // THUNK CREATORS
 export const authMe = () => async (dispatch: any) => {
     let response = await authAPI.authMe();
@@ -101,7 +103,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 
 export const getCaptcha = () => async (dispatch: any) => {
     let response = await securityAPI.getCaptcha()
-    if(response) {
+    if (response) {
         dispatch(setCaptcha(response.data.url))
     }
 }
@@ -109,7 +111,7 @@ export const getCaptcha = () => async (dispatch: any) => {
 
 export const logout = () => async (dispatch: any) => {
     let response = await authAPI.logout()
-    if(response) {
+    if (response) {
         if (response.data.resultCode === 0) {
             dispatch(setAuthUserData(null, null, null, false));
         }

@@ -11,7 +11,6 @@ const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING'
 const TOOGLE_FOLLOWING_PROGRESS = 'TOOGLE_FOLLOWING_PROGRESS'
 
 
-
 type InitialStateUsersType = {
     users: UserType[]
     pageSize: number
@@ -42,7 +41,16 @@ let initialState: InitialStateUsersType = {
 // type InitialStateUsersType = typeof initialState
 
 
-const usersReducer = (state: InitialStateUsersType = initialState, action: SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType | FollowSuccessActionType | UnfollowSuccessActionType | ToggleIsFetchingActionType | ToggleFollowingProgressActionType): InitialStateUsersType => {
+const usersReducer = (
+    state: InitialStateUsersType = initialState,
+    action: SetUsersActionType |
+        SetCurrentPageActionType |
+        SetTotalUsersCountActionType |
+        FollowSuccessActionType |
+        UnfollowSuccessActionType |
+        ToggleIsFetchingActionType |
+        ToggleFollowingProgressActionType
+): InitialStateUsersType => {
     switch (action.type) {
         case FOLLOW:
             return {

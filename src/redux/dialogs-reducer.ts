@@ -3,8 +3,6 @@ import {DialogType, MessageType} from '../types/types'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
 
-
-
 export type InitialStateDialogsType = {
     users: DialogType[]
     messages: MessageType[]
@@ -27,7 +25,10 @@ let initialState: InitialStateDialogsType = {
     ]
 }
 
-const dialogsReducer = (state: InitialStateDialogsType = initialState, action: MessageActionType): InitialStateDialogsType => {
+const dialogsReducer = (
+    state: InitialStateDialogsType = initialState,
+    action: MessageActionType
+): InitialStateDialogsType => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage = {

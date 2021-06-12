@@ -17,7 +17,6 @@ type InitialStateProfileType = {
 }
 
 
-
 let initialState: InitialStateProfileType = {
     posts: [
         {id: 0, text: 'Lorem ipsum dolor sit.', likes: 12},
@@ -30,7 +29,14 @@ let initialState: InitialStateProfileType = {
     status: ''
 }
 
-const profileReducer = (state: InitialStateProfileType = initialState, action: addPostActionCreatorType | deletePostActionCreatorType | setUserProfileActionType | setStatusActionType | savePhotoSuccessActionType) => {
+const profileReducer = (
+    state: InitialStateProfileType = initialState,
+    action: addPostActionCreatorType |
+        deletePostActionCreatorType |
+        setUserProfileActionType |
+        setStatusActionType |
+        savePhotoSuccessActionType
+) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {

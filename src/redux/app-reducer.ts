@@ -10,7 +10,10 @@ let initialState: InitialStateType = {
     initialized: false
 }
 
-const appReducer = (state: InitialStateType = initialState, action: InitializedSuccessActionType): InitialStateType => {
+const appReducer = (
+    state: InitialStateType = initialState,
+    action: InitializedSuccessActionType
+): InitialStateType => {
     switch (action.type) {
         case SET_INITIALIZED:
             return {
@@ -33,10 +36,6 @@ export const initializedSuccess = (): InitializedSuccessActionType => {
 }
 
 
-
-
-
-
 // THUNK CREATORS
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(authMe())
@@ -44,13 +43,6 @@ export const initializeApp = () => (dispatch: any) => {
         dispatch(initializedSuccess())
     })
 }
-
-
-
-
-
-
-
 
 
 export default appReducer
