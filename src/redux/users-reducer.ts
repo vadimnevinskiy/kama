@@ -1,6 +1,6 @@
-import {usersAPI} from "../api/api"
-import {updateObjectsInArray} from "../utils/object-helper"
-import {UserType} from "../types/types"
+import {usersAPI} from '../api/api'
+import {updateObjectsInArray} from '../utils/object-helper'
+import {UserType} from '../types/types'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'

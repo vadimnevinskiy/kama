@@ -1,5 +1,5 @@
-import profileReducer, {addPostActionCreator} from "./profile-reducer";
-import {addMessageActionCreator} from "./dialogs-reducer";
+import profileReducer, {addPostActionCreator} from './profile-reducer'
+import {addMessageActionCreator} from './dialogs-reducer'
 
 
 let state = {
@@ -16,11 +16,11 @@ let state = {
 
 test('Count message increment', () => {
     // 1. test data
-    let action = addMessageActionCreator("Test");
+    let action = addMessageActionCreator("Test")
 
     // 2. action
-    let newState = profileReducer(state, action);
+    let newState = profileReducer(state, action)
 
     // 3. expectation
-    expect(newState.messages.length).toBe( 3);
+    expect(newState.messages.length).toBe( 3)
 });

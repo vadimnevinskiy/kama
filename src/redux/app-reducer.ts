@@ -1,4 +1,4 @@
-import {authMe} from "./auth-reducer"
+import {authMe} from './auth-reducer'
 
 const SET_INITIALIZED = 'app/SET_INITIALIZED'
 

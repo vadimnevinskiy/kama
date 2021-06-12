@@ -1,4 +1,4 @@
-import {FavoriteType, NavbarType} from "../types/types"
+import {FavoriteType, NavbarType} from '../types/types'
 
 
 type InitialStateSidebarType = {
