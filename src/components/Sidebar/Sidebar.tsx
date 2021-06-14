@@ -6,8 +6,8 @@ import {FavoriteType, NavbarType} from '../../types/types'
 
 
 type SidebarType = {
-    navbar: NavbarType
-    favorite: FavoriteType
+    navbar: NavbarType[]
+    favorite: FavoriteType[]
 }
 type PropsType = {
     sidebar: SidebarType

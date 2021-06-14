@@ -1,7 +1,12 @@
-import React from "react";
-import classes from "./FavoriteUsers.module.css";
+import React from 'react'
+import classes from './FavoriteUsers.module.css'
+import {FavoriteType} from '../../../types/types'
 
-const FavoriteUsers = (props) => {
+
+type PropsType = {
+    favorite: FavoriteType[]
+}
+const FavoriteUsers: React.FC<PropsType> = (props) => {
     let favorite = props.favorite.map((item) => {
         return (
             <div className={classes.favoriteItem} key={item.id}>
@@ -10,12 +15,12 @@ const FavoriteUsers = (props) => {
                 </div>
                 <div className={classes.userName}>{item.name}</div>
             </div>
-        );
+        )
     })
     return (
         <div className={classes.favorites}>
             {favorite}
         </div>
-    );
+    )
 }
-export default FavoriteUsers;
+export default FavoriteUsers
