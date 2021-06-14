@@ -1,9 +1,12 @@
-import React from "react";
-import classes from "./Avatar.module.css";
-import avatar from "../../../assets/images/avatar.png";
+import React from 'react'
+import classes from './Avatar.module.css'
+import avatar from '../../../assets/images/avatar.png'
 
-
-const Avatar = ({smallPhoto, largePhoto}) => {
+type PropsType ={
+    smallPhoto: string
+    largePhoto: string
+}
+const Avatar: React.FC<PropsType> = ({smallPhoto, largePhoto}) => {
     return (
         <div className={classes.avatarBlock}>
             <img className={classes.avatarImage}
@@ -19,4 +22,4 @@ const Avatar = ({smallPhoto, largePhoto}) => {
     )
 }
 
-export default Avatar;
+export default Avatar
