@@ -1,10 +1,19 @@
-import React from "react";
-import classes from "./User.module.css";
-import {NavLink} from "react-router-dom";
-import avatar from "../../../assets/images/avatar.png";
+import React from 'react'
+import classes from './User.module.css'
+import {NavLink} from 'react-router-dom'
+import avatar from '../../../assets/images/avatar.png'
+import {UserType} from "../../../types/types";
 
 
-let User = ({user, isAuth, unfollow, follow, followingInProgress}) => {
+
+type PropsType = {
+    user: UserType
+    isAuth: boolean
+    unfollow: (UserId: number) => void
+    follow: (UserId: number) => void
+    followingInProgress: Array<number>
+}
+let User: React.FC<PropsType> = ({user, isAuth, unfollow, follow, followingInProgress}) => {
     return (
         <div key={user.id} className={classes.user}>
             <div className={classes.userImg}>
@@ -18,10 +27,10 @@ let User = ({user, isAuth, unfollow, follow, followingInProgress}) => {
                     <div>
                         {user.followed ?
                             <button disabled={followingInProgress.some(id => id === user.id)} className={classes.button + ' ' + classes.followingBtn} onClick={() => {
-                                unfollow(user.id);
+                                unfollow(user.id)
                             }}>&nbsp;</button> :
                             <button disabled={followingInProgress.some(id => id === user.id)} className={classes.button + ' ' + classes.unfollowingBtn} onClick={() => {
-                                follow(user.id);
+                                follow(user.id)
                             }}>&nbsp;</button>
                         }
                     </div>
@@ -45,4 +54,4 @@ let User = ({user, isAuth, unfollow, follow, followingInProgress}) => {
     )
 }
 
-export default User;
+export default User
