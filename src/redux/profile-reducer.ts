@@ -1,6 +1,6 @@
 import {profileAPI, usersAPI} from '../api/api'
 import {FORM_ERROR} from 'final-form'
-import {PostType, ProfileType} from '../types/types'
+import {PhotoType, PostType, ProfileType} from '../types/types'
 
 const ADD_POST = 'ADD-POST'
 const DELETE_POST = 'DELETE_POST'
@@ -25,7 +25,7 @@ let initialState: InitialStateProfileType = {
         {id: 3, text: 'Consequatur deleniti libero nam.', likes: 334}
     ],
     postText: '',
-    profile: null,
+    profile: null as ProfileType | null,
     status: ''
 }
 
@@ -36,7 +36,7 @@ const profileReducer = (
         setUserProfileActionType |
         setStatusActionType |
         savePhotoSuccessActionType
-) => {
+): InitialStateProfileType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -71,7 +71,7 @@ const profileReducer = (
         case SET_PHOTO: {
             return {
                 ...state,
-                profile: {...state.profile, photos: action.photos}
+                // profile: {...state.profile, photos: action.photos}
             }
         }
         default:
@@ -98,7 +98,7 @@ type setStatusActionType = {
 }
 type savePhotoSuccessActionType = {
     type: typeof SET_PHOTO,
-    photos: string
+    photos: PhotoType
 }
 
 export const addPostActionCreator = (postText: string): addPostActionCreatorType => {
@@ -129,7 +129,8 @@ export const setStatus = (status: string): setStatusActionType => {
     }
 }
 
-export const savePhotoSuccess = (photos: any): savePhotoSuccessActionType => {
+export const savePhotoSuccess = (photos: PhotoType): savePhotoSuccessActionType => {
+    debugger
     return {
         type: SET_PHOTO,
         photos: photos
@@ -169,6 +170,7 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
 export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(file)
     if (response.resultCode === 0) {
+        debugger
         dispatch(savePhotoSuccess(response.data.photos))
     }
 }

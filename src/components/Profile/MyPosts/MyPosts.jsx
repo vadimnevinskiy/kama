@@ -8,7 +8,7 @@ import {composeValidators, maxValue, required} from "../../../utils/validators/v
 
 
 const MyPosts = React.memo( (props) => {
-        console.log("render Yo!")
+        console.log("render MyPosts.jsx!")
         let postList = props.posts.map(item => {
             return (
                 <Posts message={item.text} likes={item.likes} key={item.id}/>
