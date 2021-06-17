@@ -5,20 +5,18 @@ import FavoriteUsers from './FavoriteUsers/FavoriteUsers'
 import {FavoriteType, NavbarType} from '../../types/types'
 
 
-type SidebarType = {
+
+type PropsType = {
     navbar: NavbarType[]
     favorite: FavoriteType[]
-}
-type PropsType = {
-    sidebar: SidebarType
 }
 
 
 const Sidebar: React.FC<PropsType> = (props) => {
     return (
         <aside className={classes.sidebar}>
-            <Navbar navbar={props.sidebar.navbar}/>
-            <FavoriteUsers favorite={props.sidebar.favorite}/>
+            <Navbar navbar={props.navbar}/>
+            <FavoriteUsers favorite={props.favorite}/>
         </aside>
     )
 }

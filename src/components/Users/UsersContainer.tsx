@@ -107,9 +107,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 
 export default compose(
-    //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
     connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
-    // connect(
         mapStateToProps,
         {
             follow: follow,

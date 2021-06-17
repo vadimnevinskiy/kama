@@ -46,7 +46,6 @@ export type NavbarType = {
     name: string
     icon: string
 }
-
 export type UserType = {
     id: number
     name: string
@@ -54,3 +53,5 @@ export type UserType = {
     photos: PhotoType
     followed: boolean
 }
+
+
