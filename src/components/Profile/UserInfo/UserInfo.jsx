@@ -33,10 +33,10 @@ const UserInfo = (props) => {
             }
         }
         const onSubmit = async (values) => {
-            let successSaved = await props.saveData(values);
+            debugger
+            let successSaved = await props.saveProfile(values);
+            deActivateEditMode();
             return successSaved;
-
-            // deActivateEditMode();
         }
 
         return (

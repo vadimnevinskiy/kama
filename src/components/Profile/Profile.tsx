@@ -2,8 +2,20 @@ import React from 'react';
 import classes from './Profile.module.css';
 import UserInfo from './UserInfo/UserInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import {PhotoType, ProfileType} from "../../types/types";
 
-const Profile = ({profile, status, updateStatus, isOwner, savePhoto, saveData}) => {
+
+
+type PropsType = {
+    profile: ProfileType | null
+    status: string
+    updateStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (photo: PhotoType) => void
+    saveProfile: (profile: ProfileType) => void
+}
+
+const Profile: React.FC<PropsType> = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
     return (
         <div className={classes.profile}>
             <UserInfo
@@ -12,7 +24,7 @@ const Profile = ({profile, status, updateStatus, isOwner, savePhoto, saveData}) 
                 updateStatus={updateStatus}
                 isOwner={isOwner}
                 savePhoto={savePhoto}
-                saveData={saveData}
+                saveProfile={saveProfile}
             />
             <MyPostsContainer />
         </div>
