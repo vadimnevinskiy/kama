@@ -1,6 +1,6 @@
 import {profileAPI, usersAPI} from '../api/api'
 import {FORM_ERROR} from 'final-form'
-import {PhotoType, PostType, ProfileType} from '../types/types'
+import {ContactsType, PhotoType, PostType, ProfileType} from '../types/types'
 
 const ADD_POST = 'ADD-POST'
 const DELETE_POST = 'DELETE_POST'
@@ -72,6 +72,14 @@ const profileReducer = (
             return {
                 ...state,
                 // profile: {...state.profile, photos: action.photos}
+                profile: {
+                    userId: state.profile?.userId,
+                    lookingForAJob: state.profile?.lookingForAJob,
+                    lookingForAJobDescription: state.profile?.lookingForAJobDescription,
+                    fullName: state.profile?.fullName,
+                    contacts: state.profile?.contacts,
+                    photos: action.photos,
+                }
             }
         }
         default:
@@ -130,7 +138,6 @@ export const setStatus = (status: string): setStatusActionType => {
 }
 
 export const savePhotoSuccess = (photos: PhotoType): savePhotoSuccessActionType => {
-    debugger
     return {
         type: SET_PHOTO,
         photos: photos
@@ -170,7 +177,6 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
 export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(file)
     if (response.resultCode === 0) {
-        debugger
         dispatch(savePhotoSuccess(response.data.photos))
     }
 }
