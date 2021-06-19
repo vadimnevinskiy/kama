@@ -13,10 +13,17 @@ type PropsType = {
 
 
 const Sidebar: React.FC<PropsType> = (props) => {
+
     return (
         <aside className={classes.sidebar}>
-            <Navbar navbar={props.navbar}/>
-            <FavoriteUsers favorite={props.favorite}/>
+            {
+                props.navbar.length > 0 &&
+                <Navbar navbar={props.navbar}/>
+            }
+            {
+                props.favorite.length > 0 &&
+                <FavoriteUsers favorite={props.favorite}/>
+            }
         </aside>
     )
 }

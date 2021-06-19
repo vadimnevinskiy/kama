@@ -22,10 +22,10 @@ let initialState: InitialStateAuthType = {
     captcha: null
 }
 
+
 const authReducer = (
     state: InitialStateAuthType = initialState,
-    action: AuthUserDataActionType |
-        CaptchaActionType
+    action: ActionsTypes
 ): InitialStateAuthType => {
     switch (action.type) {
         case SET_USER_DATA:
@@ -43,6 +43,7 @@ const authReducer = (
     }
 }
 
+type ActionsTypes = AuthUserDataActionType | CaptchaActionType
 type PayloadAuthUserDataType = {
     userId: number | null
     email: string | null
@@ -53,6 +54,11 @@ export type AuthUserDataActionType = {
     type: typeof SET_USER_DATA,
     payload: PayloadAuthUserDataType,
 }
+export type CaptchaActionType = {
+    type: typeof SET_CAPTCHA
+    captcha: string
+}
+
 
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): AuthUserDataActionType => {
     return {
@@ -66,10 +72,7 @@ export const setAuthUserData = (userId: number | null, email: string | null, log
     }
 }
 
-export type CaptchaActionType = {
-    type: typeof SET_CAPTCHA
-    captcha: string
-}
+
 export const setCaptcha = (captchaUrl: string): CaptchaActionType => {
     return {
         type: SET_CAPTCHA,

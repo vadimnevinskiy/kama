@@ -12,7 +12,7 @@ let initialState: InitialStateType = {
 
 const appReducer = (
     state: InitialStateType = initialState,
-    action: InitializedSuccessActionType
+    action: ActionsTypes
 ): InitialStateType => {
     switch (action.type) {
         case SET_INITIALIZED:
@@ -25,6 +25,7 @@ const appReducer = (
     }
 }
 
+type ActionsTypes = InitializedSuccessActionType
 export type InitializedSuccessActionType = {
     type: typeof SET_INITIALIZED
 }

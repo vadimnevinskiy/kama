@@ -43,13 +43,7 @@ let initialState: InitialStateUsersType = {
 
 const usersReducer = (
     state: InitialStateUsersType = initialState,
-    action: SetUsersActionType |
-        SetCurrentPageActionType |
-        SetTotalUsersCountActionType |
-        FollowSuccessActionType |
-        UnfollowSuccessActionType |
-        ToggleIsFetchingActionType |
-        ToggleFollowingProgressActionType
+    action: ActionsTypes
 ): InitialStateUsersType => {
     switch (action.type) {
         case FOLLOW:
@@ -82,6 +76,12 @@ const usersReducer = (
     }
 
 }
+
+
+type ActionsTypes = SetUsersActionType | SetCurrentPageActionType |
+    SetTotalUsersCountActionType | FollowSuccessActionType |
+    UnfollowSuccessActionType | ToggleIsFetchingActionType |
+    ToggleFollowingProgressActionType
 
 //ACTION CREATORS
 type SetUsersActionType = {

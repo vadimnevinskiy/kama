@@ -31,11 +31,7 @@ let initialState: InitialStateProfileType = {
 
 const profileReducer = (
     state: InitialStateProfileType = initialState,
-    action: addPostActionCreatorType |
-        deletePostActionCreatorType |
-        setUserProfileActionType |
-        setStatusActionType |
-        savePhotoSuccessActionType
+    action: ActionsTypes
 ): InitialStateProfileType => {
     switch (action.type) {
         case ADD_POST: {
@@ -72,14 +68,18 @@ const profileReducer = (
             return {
                 ...state,
                 // profile: {...state.profile, photos: action.photos}
-                profile: {
-                    userId: state.profile?.userId,
-                    lookingForAJob: state.profile?.lookingForAJob,
-                    lookingForAJobDescription: state.profile?.lookingForAJobDescription,
-                    fullName: state.profile?.fullName,
-                    contacts: state.profile?.contacts,
-                    photos: action.photos,
-                }
+                // profile: {
+                //     userId: state.profile.userId,
+                //     lookingForAJob: state.profile.lookingForAJob,
+                //     lookingForAJobDescription: state.profile.lookingForAJobDescription,
+                //     fullName: state.profile.fullName,
+                //     contacts: state.profile.contacts,
+                //     photos: action.photos,
+                // }
+                // profile: {
+                //     ...state.profile,
+                //     photos: action.photos
+                // }
             }
         }
         default:
@@ -87,6 +87,8 @@ const profileReducer = (
     }
 }
 
+type ActionsTypes =  addPostActionCreatorType | deletePostActionCreatorType |
+    setUserProfileActionType | setStatusActionType | savePhotoSuccessActionType
 
 type addPostActionCreatorType = {
     type: typeof ADD_POST,

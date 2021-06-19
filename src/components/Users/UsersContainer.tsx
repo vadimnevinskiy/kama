@@ -66,7 +66,6 @@ class UsersContainer extends React.Component<PropsType> {
     }
 
     render() {
-        // console.log("render USERS");
         return (
             <>
                 <h2>{this.props.pageTitle}</h2>

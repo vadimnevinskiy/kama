@@ -6,10 +6,18 @@ import UserData from "../UserData/UserData";
 import UserForm from "../UserForm/UserForm";
 import UserContacts from "../UserContacts/UserContacts";
 import Avatar from "../../common/Avatar/Avatar";
+import {ContactsType, PhotoType, ProfileType} from "../../../types/types";
 
 
-
-const UserInfo = (props) => {
+type PropsType = {
+    profile: ProfileType | null
+    savePhoto: (photo: PhotoType) => void
+    saveProfile: (profile: ProfileType) => void
+    isOwner: boolean
+    status: string
+    updateStatus: (status: string) => void
+}
+const UserInfo: React.FC<PropsType> = (props) => {
     let [editMode, setEditMode] = useState(false);
 
 
@@ -26,13 +34,13 @@ const UserInfo = (props) => {
             setEditMode(false);
         }
 
-        const onMainPhotoSelected = (e) => {
+        const onMainPhotoSelected = (e: any) => {
             if (e.target.files.length) {
                 let file = e.target.files[0];
                 props.savePhoto(file);
             }
         }
-        const onSubmit = async (values) => {
+        const onSubmit = async (values: ProfileType) => {
             debugger
             let successSaved = await props.saveProfile(values);
             deActivateEditMode();
@@ -103,13 +111,13 @@ const UserInfo = (props) => {
     }
 }
 
-const Contact = ({contactTitle, contactValue}) => {
-    return (
-        <div className={classes.contactItem}>
-            <strong>{contactTitle}:</strong> {contactValue}
-        </div>
-    )
-}
+// const Contact = ({contactTitle, contactValue}) => {
+//     return (
+//         <div className={classes.contactItem}>
+//             <strong>{contactTitle}:</strong> {contactValue}
+//         </div>
+//     )
+// }
 
 
 export default UserInfo;

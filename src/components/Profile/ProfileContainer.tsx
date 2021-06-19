@@ -53,8 +53,8 @@ class ProfileContainer extends React.Component<PropsType>{
         this.getUserProfile();
     }
 
-    componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-        if(this.getUserId() != prevProps.match.params.userId){
+    componentDidUpdate(prevProps: PropsType, prevState: AppStateType) {
+        if(this.getUserId() != (prevProps as any).match.params.userId){
             this.getUserProfile();
         }
 
