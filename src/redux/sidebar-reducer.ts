@@ -1,4 +1,7 @@
 import {FavoriteType, NavbarType} from '../types/types'
+import {AppStateType} from "./redux-store";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
 
 const SET_NAVBAR = 'SET_NAVBAR'
 const SET_FAVORITE = 'SET_FAVORITE'
@@ -45,7 +48,6 @@ export const setNavbar = (navbar: NavbarType[]): NavbarActionType => {
         navbar: navbar
     }
 }
-
 export const setFavorite = (favorite: FavoriteType[]): FavoriteActionType => {
     return {
         type: SET_FAVORITE,
@@ -53,12 +55,19 @@ export const setFavorite = (favorite: FavoriteType[]): FavoriteActionType => {
     }
 }
 
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
-export const addNavbar = (navbar: NavbarType[]) => (dispatch: any) => {
-    dispatch(setNavbar(navbar))
+export const addNavbar = (navbar: NavbarType[]): ThunkType => {
+  return async (dispatch) => {
+      dispatch(setNavbar(navbar))
+  }
 }
-export const addFavorite = (favorite: FavoriteType[]) => (dispatch: any) => {
-    dispatch(setFavorite(favorite))
+export const addFavorite = (favorite: FavoriteType[]): ThunkType => {
+    return async (dispatch) => {
+        dispatch(setFavorite(favorite))
+    }
 }
 
 export default sidebarReducer

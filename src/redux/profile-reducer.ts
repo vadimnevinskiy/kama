@@ -68,18 +68,6 @@ const profileReducer = (
             return {
                 ...state,
                 // profile: {...state.profile, photos: action.photos}
-                // profile: {
-                //     userId: state.profile.userId,
-                //     lookingForAJob: state.profile.lookingForAJob,
-                //     lookingForAJobDescription: state.profile.lookingForAJobDescription,
-                //     fullName: state.profile.fullName,
-                //     contacts: state.profile.contacts,
-                //     photos: action.photos,
-                // }
-                // profile: {
-                //     ...state.profile,
-                //     photos: action.photos
-                // }
             }
         }
         default:
