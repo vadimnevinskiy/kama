@@ -26,7 +26,7 @@ const Profile: React.FC<PropsType> = ({profile, status, updateStatus, isOwner, s
                 savePhoto={savePhoto}
                 saveProfile={saveProfile}
             />
-            <MyPostsContainer />
+            {/*<MyPostsContainer />*/}
         </div>
     );
 }
