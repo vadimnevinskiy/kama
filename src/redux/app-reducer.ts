@@ -1,4 +1,7 @@
 import {authMe} from './auth-reducer'
+import {AppStateType} from "./redux-store";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
 
 const SET_INITIALIZED = 'app/SET_INITIALIZED'
 
@@ -36,9 +39,12 @@ export const initializedSuccess = (): InitializedSuccessActionType => {
     }
 }
 
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
 // THUNK CREATORS
-export const initializeApp = () => (dispatch: any) => {
+export const initializeApp = (): ThunkType => async (dispatch) => {
     let promise = dispatch(authMe())
     promise.then(() => {
         dispatch(initializedSuccess())
