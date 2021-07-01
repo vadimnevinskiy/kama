@@ -6,7 +6,7 @@ import UserData from "../UserData/UserData";
 import UserForm from "../UserForm/UserForm";
 import UserContacts from "../UserContacts/UserContacts";
 import Avatar from "../../common/Avatar/Avatar";
-import {ContactsType, PhotoType, ProfileType} from "../../../types/types";
+import {PhotoType, ProfileType} from "../../../types/types";
 
 
 type PropsType = {

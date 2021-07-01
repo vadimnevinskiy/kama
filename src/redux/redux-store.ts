@@ -22,15 +22,11 @@ let rootReducer = combineReducers({
 type RootReducersType = typeof rootReducer // (globalState: AppStateType) => AppStateType
 export type AppStateType = ReturnType<RootReducersType> // The state of the entire application
 
-// let state: AppStateType
-// state. //Add dot for getting context menu for state
-
-
-
-// const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+
 const store = createStore(rootReducer,  composeEnhancers(
     applyMiddleware(thunkMiddleware)
 ))

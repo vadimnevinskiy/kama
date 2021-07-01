@@ -4,18 +4,18 @@ export type PostType = {
     likes: number
 }
 export type PhotoType = {
-    small: string
-    large: string
+    small: string | null
+    large: string | null
 }
 export type ContactsType = {
-    github: string | null
-    vk: string | null
-    facebook: string | null
-    instagram: string | null
-    twitter: string | null
-    website: string | null
-    youtube: string | null
-    mainLink: string | null
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
 }
 export type ProfileType = {
     userId: number

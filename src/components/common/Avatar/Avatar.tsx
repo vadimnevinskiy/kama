@@ -3,8 +3,8 @@ import classes from './Avatar.module.css'
 import avatar from '../../../assets/images/avatar.png'
 
 type PropsType ={
-    smallPhoto: string
-    largePhoto: string
+    smallPhoto: string | null
+    largePhoto: string | null
 }
 const Avatar: React.FC<PropsType> = ({smallPhoto, largePhoto}) => {
     return (

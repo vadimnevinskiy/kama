@@ -70,7 +70,7 @@ const profileReducer = (
         case SET_PHOTO: {
             return {
                 ...state,
-                // profile: {...state.profile, photos: action.photos}
+                profile: {...state.profile, photos: action.photos} as ProfileType // https://youtu.be/7s8RJw6uWsQ?list=PLcvhF2Wqh7DM3z1XqMw0kPuxpbyMo3HvN&t=3252
             }
         }
         default:
@@ -139,7 +139,7 @@ type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<any | void>, AppStateType, unknown, ActionsTypes>
 
 // THUNK CREATORS
-export const getProfile = (userId: number): ThunkType => async (dispatch) => {
+export const getProfile = (userId: number | null): ThunkType => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     if (response) {
         dispatch(setUserProfile(response))
@@ -170,7 +170,7 @@ export const savePhoto = (file: any): ThunkType => async (dispatch) => {
     }
 }
 
-export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch: any, getState: any) => {
+export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch, getState) => {
     const userId = getState().auth.userId
     const response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {

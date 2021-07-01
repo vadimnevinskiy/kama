@@ -43,6 +43,8 @@ type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
+
+
 // THUNK CREATORS
 export const initializeApp = (): ThunkType => async (dispatch) => {
     let promise = dispatch(authMe())
