@@ -20,13 +20,9 @@ import {
 import {UserType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
 
-// users: getUser(state),
-// pageSize: getPageSize(state),
-// totalUsersCount: getTotalUsersCount(state),
-// currentPage: getCurrentPage(state),
-// isFetching: getIsFetching(state),
-// followingInProgress: getFollowingInProgress(state),
-// isAuth: state.auth.isAuth,
+
+
+
 type MapStatePropsType = {
     users: UserType[]
     pageSize: number
@@ -36,10 +32,6 @@ type MapStatePropsType = {
     followingInProgress: Array<number>
     isAuth: boolean
 }
-
-
-
-
 
 type MapDispatchPropsType = {
     requestUsers: (currentPage: number, pageSize: number) => void

@@ -167,7 +167,53 @@ type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
-// THUNK CREATORS
+// THUNK CREATORS (OR ACTIONS CREATORS)
+
+
+
+// //STEP 1 = MANUAL TYPING (DISPATCH & GETSTATE)
+// // type GetStateType = () => AppStateType
+// // type DispatchType = Dispatch<ActionsTypes>
+// export const requestUsers = (currentPage: number, pageSize: number) => {
+//     return async (dispatch: DispatchType, getState: GetStateType) => {
+//         // let a = getState() //For getState
+//
+//         // dispatch({
+//         //     type: SET_USERS,
+//         //     users:
+//         // })
+//
+//         dispatch(toggleIsFetching(true))
+//
+//         let data = await usersAPI.getUsers(currentPage, pageSize)
+//         dispatch(toggleIsFetching(false))
+//         dispatch(setUsers(data.items))
+//         dispatch(setTotalUsersCount(data.totalCount))
+//     }
+// }
+
+// //STEP 2 = THUMK TYPING
+// // type GetStateType = () => AppStateType
+// // type DispatchType = Dispatch<ActionsTypes>
+// export const requestUsers = (currentPage: number, pageSize: number): ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes> => {
+//     return async (dispatch, getState) => {
+//         // let a = getState() //For getState
+//
+//         // dispatch({
+//         //     type: SET_USERS,
+//         //     users:
+//         // })
+//
+//         dispatch(toggleIsFetching(true))
+//
+//         let data = await usersAPI.getUsers(currentPage, pageSize)
+//         dispatch(toggleIsFetching(false))
+//         dispatch(setUsers(data.items))
+//         dispatch(setTotalUsersCount(data.totalCount))
+//     }
+// }
+
+// STEP 3 = Move ThunkAction types to separate variable ThunkType
 export const requestUsers = (currentPage: number, pageSize: number): ThunkType => {
     return async (dispatch) => {
         // let a = getState()
